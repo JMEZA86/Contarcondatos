@@ -48,9 +48,12 @@ export default function PresionQueViene() {
               <p className="ancla-texto">
                 Hay ~<strong>{coma(ctx.aportantes_por_beneficiario_2023)}</strong>{" "}
                 aportantes por cada beneficiario, y el sistema cubre solo el{" "}
-                <strong>51%</strong> de los beneficios que paga.
+                <strong>{coma(ctx.cobertura_beneficios_pct)}%</strong> de los
+                beneficios que paga.
               </p>
-              <p className="ancla-fuente">ANSES / OPC · 2021–2023</p>
+              <p className="ancla-fuente">
+                ANSES (2023) · OPC (dic. 2021)
+              </p>
             </div>
           </div>
 

@@ -29,7 +29,11 @@
   "contexto_anses": {
     "aportantes_por_beneficiario_2009": 1.72,
     "aportantes_por_beneficiario_2023": 1.89,
-    "fuente": "ANSES, Anuario Estadístico 2008/2023, Capítulo 4.",
+    "cobertura_beneficios_pct": 51.6,
+    "deficit_millones_dic2021": 144016,
+    "fecha_cobertura": "diciembre 2021",
+    "fuente_ratio": "ANSES, Anuario Estadístico 2008/2023, Capítulo 4.",
+    "fuente_cobertura": "OPC, Estado de situación del SIPA (datos al 31/12/2021), en base al Boletín Estadístico de la Seguridad Social de ANSES.",
     "nota": "En el sistema previsional real, el ratio aportante/beneficiario se mantuvo estable (subió de 1,72 en 2009 a 1,89 en 2023). Acá mostramos la presión demográfica de fondo, que sí empeora."
   },
   "serie": [
