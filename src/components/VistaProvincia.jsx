@@ -71,7 +71,7 @@ export default function VistaProvincia() {
           {/* ---------- Esperanza de vida ---------- */}
           <article className="fuerza">
             <p className="fuerza-eyebrow" style={{ color: CORAL }}>
-              Esperanza de vida · {corto(prov.nombre)}
+              Esperanza de vida
             </p>
             <p className="fuerza-cifra">
               {coma1(provEsp.mujeres)}{" "}
@@ -104,7 +104,7 @@ export default function VistaProvincia() {
           {/* ---------- Fecundidad ---------- */}
           <article className="fuerza">
             <p className="fuerza-eyebrow" style={{ color: CORAL }}>
-              Fecundidad · {corto(prov.nombre)}
+              Fecundidad
             </p>
             <p className="fuerza-cifra">
               {coma2(provFec)} <span className="u">hijos por mujer</span>

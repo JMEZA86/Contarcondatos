@@ -19,8 +19,8 @@ import { scaleLinear } from "d3";
 //   unidad     -> texto de la unidad, se muestra al pie del tooltip
 // ==========================================================================
 const ANCHO = 340;
-const ALTO = 190;
-const M = { top: 22, right: 16, bottom: 26, left: 16 };
+const ALTO = 168;
+const M = { top: 20, right: 16, bottom: 24, left: 16 };
 
 export default function MiniLinea({
   lineas,
