@@ -170,8 +170,19 @@ export default function PiramidePoblacional() {
     // Layout de dos columnas en desktop: controles a la izquierda, gráfico a la
     // derecha. En pantallas angostas (mobile) se apila en una sola columna.
     <div className="piramide-layout">
-      {/* ---------- Columna izquierda: controles ---------- */}
+      {/* ---------- Columna izquierda: título, intro y controles ---------- */}
       <div className="piramide-controles">
+      {/* --- Título e introducción (antes estaban en un hero aparte) --- */}
+      <p className="kicker">Argentina · Transición demográfica</p>
+      <h1 className="titulo">La Pirámide Invertida</h1>
+      <p className="bajada">
+        Argentina nace menos y vive más. Cada vez hay menos gente joven
+        sosteniendo a más gente mayor. Movés el año y ves cómo cambia la forma
+        de la población, con datos oficiales de INDEC.
+      </p>
+
+      <h2 className="seccion-titulo">La forma cambia</h2>
+
       {/* --- Control del año --- */}
       <div className="control-anio">
         <span className="anio-grande">{anio}</span>
@@ -209,6 +220,11 @@ export default function PiramidePoblacional() {
         En {anio}, el <strong style={{ color: "var(--texto-1)" }}>{pct65}%</strong>{" "}
         de la población tiene 65 años o más. Población total: {fmt(totalAnio)}{" "}
         personas.
+      </p>
+
+      <p className="fuente-mini">
+        Fuente: INDEC. Estimaciones y proyecciones de población 2022–2040 (base
+        Censo 2022). Edades en quinquenios; “100+” incluye 100 años y más.
       </p>
       </div>
       {/* ---------- Fin columna izquierda ---------- */}
