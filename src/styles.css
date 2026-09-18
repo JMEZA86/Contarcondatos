@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Identidad visual "Estratos"
+   Definimos los colores como variables CSS (custom properties) una sola vez,
+   acá en :root, y después los usamos con var(--nombre) en toda la app.
+   Si mañana querés cambiar un color, lo cambiás en un solo lugar.
+   ========================================================================== */
+:root {
+  /* Paleta del brief */
+  --fondo: #15110e;
+  --coral: #d85a30; /* mujeres — acento principal */
+  --coral-claro: #f0997b;
+  --verde: #1d9e75; /* varones */
+  --texto-1: #f5f0e8; /* texto principal */
+  --texto-2: #b0a99c; /* texto secundario */
+  --texto-3: #7a7266; /* texto terciario */
+
+  /* Tipografías */
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Inter", system-ui, sans-serif;
+
+  color-scheme: dark;
+}
+
+/* Reset mínimo: sacamos márgenes por defecto y usamos box-sizing cómodo. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--fondo);
+  color: var(--texto-1);
+  font-family: var(--sans);
+  /* Un poquito de textura de estratos: capas suaves superpuestas con opacidad,
+     sin gradientes duros ni sombras (principio del brief). */
+  background-image:
+    radial-gradient(1200px 600px at 80% -10%, rgba(216, 90, 48, 0.06), transparent),
+    radial-gradient(900px 500px at 0% 20%, rgba(29, 158, 117, 0.05), transparent);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Layout general
+   ========================================================================== */
+.contenedor {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 20px; /* 20px de aire a los costados, también en mobile */
+}
+
+/* --- Hero / encabezado --- */
+.hero {
+  padding: 72px 0 32px;
+}
+
+.hero .kicker {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral-claro);
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(40px, 7vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 14px 0 18px;
+  color: var(--texto-1);
+}
+
+.hero p.bajada {
+  font-family: var(--sans);
+  font-size: clamp(16px, 2.2vw, 20px);
+  color: var(--texto-2);
+  max-width: 60ch;
+}
+
+/* --- Sección del explorador --- */
+.explorador {
+  padding: 24px 0 96px;
+}
+
+.explorador h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(24px, 3.4vw, 34px);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+.explorador .subtitulo {
+  color: var(--texto-2);
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+/* --- Control del año (slider) --- */
+.control-anio {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.control-anio .anio-grande {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(44px, 8vw, 72px);
+  line-height: 1;
+  color: var(--texto-1);
+  font-variant-numeric: tabular-nums;
+}
+
+.control-anio .etiqueta-fase {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  border: 1px solid var(--texto-3);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+/* El slider en sí. Le damos un look sobrio acorde a la paleta. */
+input[type="range"] {
+  width: 100%;
+  max-width: 520px;
+  appearance: none;
+  height: 4px;
+  background: #3a322b;
+  border-radius: 999px;
+  outline: none;
+  margin: 18px 0 8px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--coral);
+  cursor: pointer;
+  border: 3px solid var(--fondo);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--coral);
+  cursor: pointer;
+  border: 3px solid var(--fondo);
+}
+
+.rango-anios {
+  display: flex;
+  justify-content: space-between;
+  max-width: 520px;
+  font-size: 12px;
+  color: var(--texto-3);
+}
+
+/* --- Referencias (leyenda) de colores --- */
+.leyenda {
+  display: flex;
+  gap: 20px;
+  margin: 8px 0 4px;
+  font-size: 13px;
+  color: var(--texto-2);
+}
+.leyenda .item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.leyenda .muestra {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+/* --- Pie de fuente --- */
+.fuente {
+  font-size: 12px;
+  color: var(--texto-3);
+  margin-top: 18px;
+  max-width: 70ch;
+}
+
+/* El SVG de la pirámide ocupa el ancho disponible y no se desborda. */
+.grafico-piramide {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 8px;
+}
