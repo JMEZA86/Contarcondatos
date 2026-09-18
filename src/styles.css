@@ -46,7 +46,7 @@ body {
    Layout general
    ========================================================================== */
 .contenedor {
-  max-width: 960px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 0 20px; /* 20px de aire a los costados, también en mobile */
 }
@@ -193,14 +193,28 @@ input[type="range"]::-moz-range-thumb {
   max-width: 70ch;
 }
 
-/* El SVG de la pirámide: ancho fluido pero con un tope, así no se agranda
-   demasiado en pantallas grandes y se ve más contenida. */
+/* Layout de dos columnas: controles (izquierda) + gráfico (derecha).
+   align-items:start para que la pirámide se alinee arriba junto a los controles. */
+.piramide-layout {
+  display: grid;
+  grid-template-columns: minmax(230px, 320px) 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-top: 8px;
+}
+/* En pantallas angostas (tablet/mobile) se apila en una sola columna. */
+@media (max-width: 820px) {
+  .piramide-layout {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* El SVG de la pirámide llena su columna. */
 .grafico-piramide {
   width: 100%;
-  max-width: 760px;
   height: auto;
   display: block;
-  margin-top: 8px;
 }
 
 /* Envoltorio con position:relative para poder ubicar el tooltip encima. */

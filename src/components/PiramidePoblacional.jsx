@@ -167,7 +167,11 @@ export default function PiramidePoblacional() {
   const pctHover = gHover ? ((totalHover / totalAnio) * 100).toFixed(1) : 0;
 
   return (
-    <div>
+    // Layout de dos columnas en desktop: controles a la izquierda, gráfico a la
+    // derecha. En pantallas angostas (mobile) se apila en una sola columna.
+    <div className="piramide-layout">
+      {/* ---------- Columna izquierda: controles ---------- */}
+      <div className="piramide-controles">
       {/* --- Control del año --- */}
       <div className="control-anio">
         <span className="anio-grande">{anio}</span>
@@ -206,7 +210,10 @@ export default function PiramidePoblacional() {
         de la población tiene 65 años o más. Población total: {fmt(totalAnio)}{" "}
         personas.
       </p>
+      </div>
+      {/* ---------- Fin columna izquierda ---------- */}
 
+      {/* ---------- Columna derecha: el gráfico ---------- */}
       {/* --- El gráfico (envuelto para poder poner el tooltip encima) --- */}
       <div className="grafico-wrap" ref={wrapRef}>
         <svg
