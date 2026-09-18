@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "titulo": "Ratio de sostén demográfico proyectado — Total del país",
+    "fuente": "Elaboración propia sobre INDEC. Proyecciones de población 2022–2040 (base Censo 2022).",
+    "anios": [
+      2022,
+      2023,
+      2024,
+      2025,
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035,
+      2036,
+      2037,
+      2038,
+      2039,
+      2040
+    ],
+    "definicion": "Personas en edad de trabajar (15 a 64 años) por cada persona de 65 años o más.",
+    "advertencia": "Es el sostén demográfico potencial (toda la población en edad activa), no el ratio real de aportantes por jubilado del sistema previsional."
+  },
+  "contexto_anses": {
+    "aportantes_por_beneficiario_2009": 1.72,
+    "aportantes_por_beneficiario_2023": 1.89,
+    "fuente": "ANSES, Anuario Estadístico 2008/2023, Capítulo 4.",
+    "nota": "En el sistema previsional real, el ratio aportante/beneficiario se mantuvo estable (subió de 1,72 en 2009 a 1,89 en 2023). Acá mostramos la presión demográfica de fondo, que sí empeora."
+  },
+  "serie": [
+    {
+      "anio": 2022,
+      "activos": 30185725,
+      "mayores": 5529167,
+      "sosten": 5.46,
+      "dep_por_100": 18.3
+    },
+    {
+      "anio": 2023,
+      "activos": 30447241,
+      "mayores": 5610238,
+      "sosten": 5.43,
+      "dep_por_100": 18.4
+    },
+    {
+      "anio": 2024,
+      "activos": 30728733,
+      "mayores": 5711979,
+      "sosten": 5.38,
+      "dep_por_100": 18.6
+    },
+    {
+      "anio": 2025,
+      "activos": 31016749,
+      "mayores": 5815927,
+      "sosten": 5.33,
+      "dep_por_100": 18.8
+    },
+    {
+      "anio": 2026,
+      "activos": 31307244,
+      "mayores": 5922327,
+      "sosten": 5.29,
+      "dep_por_100": 18.9
+    },
+    {
+      "anio": 2027,
+      "activos": 31592447,
+      "mayores": 6031328,
+      "sosten": 5.24,
+      "dep_por_100": 19.1
+    },
+    {
+      "anio": 2028,
+      "activos": 31876009,
+      "mayores": 6142648,
+      "sosten": 5.19,
+      "dep_por_100": 19.3
+    },
+    {
+      "anio": 2029,
+      "activos": 32171940,
+      "mayores": 6255112,
+      "sosten": 5.14,
+      "dep_por_100": 19.4
+    },
+    {
+      "anio": 2030,
+      "activos": 32462921,
+      "mayores": 6367718,
+      "sosten": 5.1,
+      "dep_por_100": 19.6
+    },
+    {
+      "anio": 2031,
+      "activos": 32716557,
+      "mayores": 6480544,
+      "sosten": 5.05,
+      "dep_por_100": 19.8
+    },
+    {
+      "anio": 2032,
+      "activos": 32937465,
+      "mayores": 6594032,
+      "sosten": 5.0,
+      "dep_por_100": 20.0
+    },
+    {
+      "anio": 2033,
+      "activos": 33131699,
+      "mayores": 6709837,
+      "sosten": 4.94,
+      "dep_por_100": 20.3
+    },
+    {
+      "anio": 2034,
+      "activos": 33273264,
+      "mayores": 6831713,
+      "sosten": 4.87,
+      "dep_por_100": 20.5
+    },
+    {
+      "anio": 2035,
+      "activos": 33336568,
+      "mayores": 6963335,
+      "sosten": 4.79,
+      "dep_por_100": 20.9
+    },
+    {
+      "anio": 2036,
+      "activos": 33334987,
+      "mayores": 7105814,
+      "sosten": 4.69,
+      "dep_por_100": 21.3
+    },
+    {
+      "anio": 2037,
+      "activos": 33288940,
+      "mayores": 7258199,
+      "sosten": 4.59,
+      "dep_por_100": 21.8
+    },
+    {
+      "anio": 2038,
+      "activos": 33200360,
+      "mayores": 7421088,
+      "sosten": 4.47,
+      "dep_por_100": 22.4
+    },
+    {
+      "anio": 2039,
+      "activos": 33075632,
+      "mayores": 7597415,
+      "sosten": 4.35,
+      "dep_por_100": 23.0
+    },
+    {
+      "anio": 2040,
+      "activos": 32921609,
+      "mayores": 7789606,
+      "sosten": 4.23,
+      "dep_por_100": 23.7
+    }
+  ],
+  "resumen": {
+    "anio_inicial": 2022,
+    "sosten_inicial": 5.46,
+    "anio_final": 2040,
+    "sosten_final": 4.23,
+    "caida_pct": -22.5
+  }
+}

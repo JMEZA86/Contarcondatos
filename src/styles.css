@@ -272,6 +272,83 @@ input[type="range"]::-moz-range-thumb {
   color: var(--texto-1);
 }
 
+/* --- Capa 3: sostén demográfico proyectado --- */
+.sosten-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 420px) 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 760px) {
+  .sosten-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.sosten-cifra {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(52px, 7vw, 84px);
+  line-height: 0.95;
+  color: var(--texto-1);
+}
+.sosten-cifra .u {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--texto-2);
+  margin-top: 8px;
+  max-width: 34ch;
+}
+
+.sosten-sub {
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--texto-2);
+  line-height: 1.55;
+  margin-top: 16px;
+  max-width: 40ch;
+}
+.sosten-sub strong {
+  color: var(--texto-1);
+}
+
+/* Recuadro "ancla del presente" (dato real de ANSES/OPC). */
+.ancla-hoy {
+  margin-top: 22px;
+  border-left: 3px solid var(--coral);
+  background: rgba(216, 90, 48, 0.06);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  max-width: 40ch;
+}
+.ancla-titulo {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--coral-claro);
+  margin-bottom: 6px;
+}
+.ancla-texto {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--texto-2);
+  line-height: 1.5;
+}
+.ancla-texto strong {
+  color: var(--texto-1);
+}
+.ancla-fuente {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--texto-3);
+  margin-top: 6px;
+}
+
 /* El mini-gráfico de líneas ocupa el ancho de su tarjeta. */
 .mini-wrap {
   position: relative;
