@@ -29,13 +29,23 @@ export default function MapaProvincias({ seleccion, onSelect }) {
     return m;
   }, []);
 
-  // Escala de color: de terracota oscuro (menor) a coral claro (mayor).
-  const color = useMemo(() => {
+  // Colores extremos de la escala (oscuro = menos años, claro = más años).
+  const COLOR_MIN = "#5c2e1a";
+  const COLOR_MAX = "#F0997B";
+
+  // Escala de color y valores mínimo/máximo (para la barra de referencia).
+  const { color, minV, maxV } = useMemo(() => {
     const vals = Object.values(valorPorCod);
-    return scaleLinear()
-      .domain([d3min(vals), d3max(vals)])
-      .range(["#5c2e1a", "#F0997B"]);
+    const lo = d3min(vals);
+    const hi = d3max(vals);
+    return {
+      color: scaleLinear().domain([lo, hi]).range([COLOR_MIN, COLOR_MAX]),
+      minV: lo,
+      maxV: hi,
+    };
   }, [valorPorCod]);
+
+  const coma1 = (v) => v.toFixed(1).replace(".", ",");
 
   // Proyección y generador de paths. Dos pasos para que el ancho quede ajustado
   // a la forma real del país (y no sobre espacio a los costados).
@@ -85,10 +95,19 @@ export default function MapaProvincias({ seleccion, onSelect }) {
         })}
       </svg>
 
-      {/* Leyenda del color */}
-      <p className="mapa-leyenda">
-        Color: esperanza de vida de mujeres (2040) — más claro, más años.
-      </p>
+      {/* Leyenda de color: barra con degradé + dirección */}
+      <div className="mapa-leyenda">
+        <div className="ley-cap">Esperanza de vida · mujeres · 2040</div>
+        <div
+          className="ley-barra"
+          style={{ background: `linear-gradient(90deg, ${COLOR_MIN}, ${COLOR_MAX})` }}
+        />
+        <div className="ley-ejes">
+          <span>{coma1(minV)} años</span>
+          <span className="ley-flecha">menos → más años</span>
+          <span>{coma1(maxV)} años</span>
+        </div>
+      </div>
 
       {hover && (
         <div className="mapa-tooltip" style={{ left: hover.x, top: hover.y }}>
