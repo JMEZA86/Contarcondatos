@@ -28,6 +28,54 @@
   padding: 0;
 }
 
+/* Modo presentación: al scrollear, cada capa se "encaja" en la pantalla como
+   una diapositiva. Solo en desktop, para no molestar el scroll táctil. */
+@media (min-width: 821px) {
+  html {
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+  }
+  .pagina,
+  .capa {
+    scroll-snap-align: start;
+  }
+}
+
+/* Botón flotante de pantalla completa (modo presentación). */
+.btn-pantalla {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-1);
+  background: rgba(30, 24, 20, 0.82);
+  border: 1px solid #4a4038;
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: border-color 150ms ease, background 150ms ease;
+}
+.btn-pantalla:hover {
+  border-color: var(--coral);
+  background: rgba(40, 30, 24, 0.92);
+}
+.btn-pantalla svg {
+  color: var(--coral-claro);
+}
+@media (max-width: 560px) {
+  /* En pantallas chiquitas solo el ícono, para no tapar contenido. */
+  .btn-pantalla span {
+    display: none;
+  }
+}
+
 body {
   background-color: var(--fondo);
   color: var(--texto-1);

@@ -2,6 +2,7 @@ import PiramidePoblacional from "./components/PiramidePoblacional.jsx";
 import PorQueCambia from "./components/PorQueCambia.jsx";
 import PresionQueViene from "./components/PresionQueViene.jsx";
 import VistaProvincia from "./components/VistaProvincia.jsx";
+import BotonPantalla from "./components/BotonPantalla.jsx";
 
 // Componente principal. La narrativa se lee de arriba a abajo:
 //   1) Hero: la pirámide interactiva (la forma cambia)
@@ -20,6 +21,8 @@ export default function App() {
       <PorQueCambia />
       <PresionQueViene />
       <VistaProvincia />
+
+      <BotonPantalla />
     </>
   );
 }
