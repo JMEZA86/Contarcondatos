@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { scaleLinear, max as d3max } from "d3";
+import { useMemo, useState, useEffect, useRef } from "react";
+import { scaleLinear, easeCubicOut } from "d3";
 
 // Importamos el JSON limpio que generó el ETL (data/processed).
 // Vite lo empaqueta automáticamente; queda disponible como un objeto JS.
@@ -14,6 +14,7 @@ const ANCHO = 920;
 const MARGEN = { top: 34, right: 12, bottom: 30, left: 12 };
 const HUECO_CENTRO = 58; // espacio central para las etiquetas de edad
 const ALTO_FILA = 24; // alto de cada banda de edad (quinquenio)
+const DURACION_ANIM = 550; // milisegundos que dura la transición entre años
 
 // Colores (los mismos de la paleta "Estratos").
 const VERDE = "#1d9e75"; // varones
@@ -28,8 +29,6 @@ const CORAL = "#d85a30"; // mujeres
 function agruparEnQuinquenios(filas) {
   const grupos = [];
   for (let inicio = 0; inicio <= 100; inicio += 5) {
-    // Sumamos varones y mujeres de las edades que caen en este grupo.
-    // El grupo de 100 es "100 y más" (solo la edad 100).
     const fin = inicio === 100 ? 100 : inicio + 4;
     let varones = 0;
     let mujeres = 0;
@@ -41,6 +40,8 @@ function agruparEnQuinquenios(filas) {
     }
     grupos.push({
       etiqueta: inicio === 100 ? "100+" : `${inicio}`,
+      // Texto largo para el tooltip:
+      rango: inicio === 100 ? "100 años y más" : `${inicio} a ${fin} años`,
       inicio,
       varones,
       mujeres,
@@ -50,16 +51,19 @@ function agruparEnQuinquenios(filas) {
 }
 
 // Formatea un número al estilo argentino (46.135.579).
-const fmt = (n) => n.toLocaleString("es-AR");
+const fmt = (n) => Math.round(n).toLocaleString("es-AR");
 
 export default function PiramidePoblacional() {
-  // El año que el usuario elige con el slider. Arranca en el primero disponible.
   const anios = datos.meta.anios; // [2022, ..., 2040]
   const [anio, setAnio] = useState(anios[0]);
 
+  // Índice de la franja de edad sobre la que está el mouse (o null si ninguna),
+  // y la posición del puntero para ubicar el tooltip.
+  const [hover, setHover] = useState(null); // { i, x, y }
+  const wrapRef = useRef(null); // referencia al div contenedor (para medir posición)
+
   // ------------------------------------------------------------------------
   // Pre-cálculo 1: agrupar TODOS los años en quinquenios una sola vez.
-  // useMemo evita recalcular en cada render si los datos no cambian.
   // ------------------------------------------------------------------------
   const porAnio = useMemo(() => {
     const out = {};
@@ -70,54 +74,97 @@ export default function PiramidePoblacional() {
   }, [anios]);
 
   // ------------------------------------------------------------------------
-  // Pre-cálculo 2: el valor máximo de población en CUALQUIER año/grupo/sexo.
-  // Lo usamos para fijar la escala del eje X. Si la escala se recalculara por
-  // año, las barras "saltarían" al mover el slider; con un máximo fijo, la
-  // pirámide crece/decrece de forma comparable entre años.
+  // Pre-cálculo 2: el valor máximo de población en CUALQUIER año/grupo/sexo,
+  // para fijar la escala del eje X y que las barras sean comparables entre años.
   // ------------------------------------------------------------------------
   const maxPob = useMemo(() => {
     let m = 0;
     for (const a of anios) {
-      for (const g of porAnio[a]) {
-        m = Math.max(m, g.varones, g.mujeres);
-      }
+      for (const g of porAnio[a]) m = Math.max(m, g.varones, g.mujeres);
     }
     return m;
   }, [porAnio, anios]);
 
   // ------------------------------------------------------------------------
+  // ANIMACIÓN (tweening).
+  // "display" son los valores que realmente se dibujan. Cuando cambia el año,
+  // animamos "display" desde donde está hasta el año destino, cuadro a cuadro
+  // con requestAnimationFrame. Así las barras se deslizan en vez de saltar.
+  // ------------------------------------------------------------------------
+  const [display, setDisplay] = useState(() => porAnio[anios[0]]);
+  const displayRef = useRef(display); // para arrancar la animación desde el estado actual
+  useEffect(() => {
+    displayRef.current = display;
+  });
+
+  useEffect(() => {
+    const desde = displayRef.current; // valores actuales en pantalla
+    const hasta = porAnio[anio]; // valores del año elegido
+    let inicio = null;
+    let raf;
+
+    const paso = (ts) => {
+      if (inicio === null) inicio = ts;
+      const t = Math.min(1, (ts - inicio) / DURACION_ANIM);
+      const e = easeCubicOut(t); // curva de suavizado (rápido al principio, frena al final)
+      // Interpolamos varones y mujeres de cada grupo entre "desde" y "hasta".
+      const interp = hasta.map((g, i) => ({
+        ...g,
+        varones: desde[i].varones + (g.varones - desde[i].varones) * e,
+        mujeres: desde[i].mujeres + (g.mujeres - desde[i].mujeres) * e,
+      }));
+      setDisplay(interp);
+      if (t < 1) raf = requestAnimationFrame(paso);
+    };
+
+    raf = requestAnimationFrame(paso);
+    return () => cancelAnimationFrame(raf); // si cambian de año a mitad de camino, cortamos
+  }, [anio, porAnio]);
+
+  // ------------------------------------------------------------------------
   // Geometría del gráfico.
   // ------------------------------------------------------------------------
-  const grupos = porAnio[anio];
+  const grupos = porAnio[anio]; // valores EXACTOS del año (para textos/tooltip)
   const nFilas = grupos.length; // 21
   const alto = MARGEN.top + nFilas * ALTO_FILA + MARGEN.bottom;
 
   const anchoPlot = ANCHO - MARGEN.left - MARGEN.right;
-  const anchoMitad = (anchoPlot - HUECO_CENTRO) / 2; // ancho de cada lado
+  const anchoMitad = (anchoPlot - HUECO_CENTRO) / 2;
   const bordeIzq = MARGEN.left + anchoMitad; // borde interno del lado varones
   const bordeDer = bordeIzq + HUECO_CENTRO; // borde interno del lado mujeres
 
-  // Escala: convierte una cantidad de población en un ancho en píxeles.
   const x = scaleLinear().domain([0, maxPob]).range([0, anchoMitad]);
-
-  // Posición vertical: el grupo 0 (0-4) va ABAJO, el 100+ va ARRIBA.
   const yDe = (i) => MARGEN.top + (nFilas - 1 - i) * ALTO_FILA;
-  const altoBarra = ALTO_FILA - 6; // dejamos un respiro entre barras
-
-  // Ticks del eje X (población), en valores redondos.
+  const altoBarra = ALTO_FILA - 6;
   const ticks = x.ticks(4).filter((t) => t > 0);
 
-  // ------------------------------------------------------------------------
-  // Un dato para contar la historia: qué % tiene 65 años o más este año.
-  // ------------------------------------------------------------------------
+  // Dato para el subtítulo: % de 65 años o más este año.
   const totalAnio = grupos.reduce((s, g) => s + g.varones + g.mujeres, 0);
   const total65 = grupos
     .filter((g) => g.inicio >= 65)
     .reduce((s, g) => s + g.varones + g.mujeres, 0);
   const pct65 = ((total65 / totalAnio) * 100).toFixed(1);
-
-  // ¿Es un año proyectado? (2022 es base; de 2023 en adelante es proyección.)
   const esProyeccion = anio > anios[0];
+
+  // ------------------------------------------------------------------------
+  // Manejo del hover: guardamos qué franja y dónde está el puntero.
+  // Convertimos la posición del mouse a coordenadas RELATIVAS al contenedor,
+  // porque el tooltip es un <div> que se ubica con esas coordenadas.
+  // ------------------------------------------------------------------------
+  const alEntrar = (i) => (evento) => {
+    const caja = wrapRef.current.getBoundingClientRect();
+    setHover({
+      i,
+      x: evento.clientX - caja.left,
+      y: evento.clientY - caja.top,
+    });
+  };
+  const alSalir = () => setHover(null);
+
+  // Datos de la franja bajo el mouse (si hay), para el contenido del tooltip.
+  const gHover = hover ? grupos[hover.i] : null;
+  const totalHover = gHover ? gHover.varones + gHover.mujeres : 0;
+  const pctHover = gHover ? ((totalHover / totalAnio) * 100).toFixed(1) : 0;
 
   return (
     <div>
@@ -143,7 +190,6 @@ export default function PiramidePoblacional() {
         <span>{anios[anios.length - 1]}</span>
       </div>
 
-      {/* --- Leyenda de colores --- */}
       <div className="leyenda">
         <span className="item">
           <span className="muestra" style={{ background: VERDE }} />
@@ -157,164 +203,128 @@ export default function PiramidePoblacional() {
 
       <p className="fuente" style={{ marginTop: 6, color: "var(--texto-2)" }}>
         En {anio}, el <strong style={{ color: "var(--texto-1)" }}>{pct65}%</strong>{" "}
-        de la población tiene 65 años o más. Población total:{" "}
-        {fmt(totalAnio)} personas.
+        de la población tiene 65 años o más. Población total: {fmt(totalAnio)}{" "}
+        personas.
       </p>
 
-      {/* --- El gráfico --- */}
-      <svg
-        className="grafico-piramide"
-        viewBox={`0 0 ${ANCHO} ${alto}`}
-        role="img"
-        aria-label={`Pirámide de población de Argentina en ${anio}`}
-      >
-        {/* ----------------------------------------------------------------
-            <defs>: acá definimos los PATRONES de siluetas humanas.
-            Cada patrón es un mosaico ("tile") de 12x16 px con una personita
-            (círculo = cabeza, rectángulo redondeado = cuerpo). Al usarlo como
-            relleno de una barra, se repite y da la textura "de gente".
-            patternUnits="userSpaceOnUse" hace que el mosaico se mida en las
-            mismas unidades que el gráfico, así las personitas quedan del mismo
-            tamaño en todas las barras.
-        ---------------------------------------------------------------- */}
-        <defs>
-          <pattern
-            id="gente-varones"
-            width="12"
-            height="16"
-            patternUnits="userSpaceOnUse"
-          >
-            {/* fondo tenue del color */}
-            <rect width="12" height="16" fill={VERDE} opacity="0.18" />
-            {/* cabeza */}
-            <circle cx="6" cy="4" r="2.1" fill={VERDE} />
-            {/* cuerpo */}
-            <rect x="3.4" y="6.6" width="5.2" height="7" rx="2.4" fill={VERDE} />
-          </pattern>
-
-          <pattern
-            id="gente-mujeres"
-            width="12"
-            height="16"
-            patternUnits="userSpaceOnUse"
-          >
-            <rect width="12" height="16" fill={CORAL} opacity="0.18" />
-            <circle cx="6" cy="4" r="2.1" fill={CORAL} />
-            <rect x="3.4" y="6.6" width="5.2" height="7" rx="2.4" fill={CORAL} />
-          </pattern>
-        </defs>
-
-        {/* --- Encabezados de cada lado --- */}
-        <text
-          x={bordeIzq}
-          y={18}
-          textAnchor="end"
-          fill={VERDE}
-          fontFamily="var(--sans)"
-          fontSize="13"
-          fontWeight="600"
-          letterSpacing="0.12em"
+      {/* --- El gráfico (envuelto para poder poner el tooltip encima) --- */}
+      <div className="grafico-wrap" ref={wrapRef}>
+        <svg
+          className="grafico-piramide"
+          viewBox={`0 0 ${ANCHO} ${alto}`}
+          role="img"
+          aria-label={`Pirámide de población de Argentina en ${anio}`}
         >
-          VARONES
-        </text>
-        <text
-          x={bordeDer}
-          y={18}
-          textAnchor="start"
-          fill={CORAL}
-          fontFamily="var(--sans)"
-          fontSize="13"
-          fontWeight="600"
-          letterSpacing="0.12em"
-        >
-          MUJERES
-        </text>
+          {/* PATRONES de siluetas humanas (mosaico 12x16 con cabeza + cuerpo). */}
+          <defs>
+            <pattern id="gente-varones" width="12" height="16" patternUnits="userSpaceOnUse">
+              <rect width="12" height="16" fill={VERDE} opacity="0.18" />
+              <circle cx="6" cy="4" r="2.1" fill={VERDE} />
+              <rect x="3.4" y="6.6" width="5.2" height="7" rx="2.4" fill={VERDE} />
+            </pattern>
+            <pattern id="gente-mujeres" width="12" height="16" patternUnits="userSpaceOnUse">
+              <rect width="12" height="16" fill={CORAL} opacity="0.18" />
+              <circle cx="6" cy="4" r="2.1" fill={CORAL} />
+              <rect x="3.4" y="6.6" width="5.2" height="7" rx="2.4" fill={CORAL} />
+            </pattern>
+          </defs>
 
-        {/* --- Líneas guía verticales del eje X (población) --- */}
-        {ticks.map((t) => (
-          <g key={`tick-${t}`}>
-            {/* lado varones (a la izquierda del centro) */}
-            <line
-              x1={bordeIzq - x(t)}
-              x2={bordeIzq - x(t)}
-              y1={MARGEN.top}
-              y2={alto - MARGEN.bottom}
-              stroke="#ffffff"
-              strokeOpacity="0.06"
-            />
-            {/* lado mujeres (a la derecha del centro) */}
-            <line
-              x1={bordeDer + x(t)}
-              x2={bordeDer + x(t)}
-              y1={MARGEN.top}
-              y2={alto - MARGEN.bottom}
-              stroke="#ffffff"
-              strokeOpacity="0.06"
-            />
-            {/* etiquetas de población (en miles) */}
-            <text
-              x={bordeIzq - x(t)}
-              y={alto - MARGEN.bottom + 16}
-              textAnchor="middle"
-              fill="var(--texto-3)"
-              fontFamily="var(--sans)"
-              fontSize="11"
-            >
-              {Math.round(t / 1000)}k
-            </text>
-            <text
-              x={bordeDer + x(t)}
-              y={alto - MARGEN.bottom + 16}
-              textAnchor="middle"
-              fill="var(--texto-3)"
-              fontFamily="var(--sans)"
-              fontSize="11"
-            >
-              {Math.round(t / 1000)}k
-            </text>
-          </g>
-        ))}
+          {/* Encabezados de cada lado */}
+          <text x={bordeIzq} y={18} textAnchor="end" fill={VERDE} fontFamily="var(--sans)" fontSize="13" fontWeight="600" letterSpacing="0.12em">
+            VARONES
+          </text>
+          <text x={bordeDer} y={18} textAnchor="start" fill={CORAL} fontFamily="var(--sans)" fontSize="13" fontWeight="600" letterSpacing="0.12em">
+            MUJERES
+          </text>
 
-        {/* --- Las barras + etiquetas de edad --- */}
-        {grupos.map((g, i) => {
-          const y = yDe(i);
-          const wVar = x(g.varones);
-          const wMuj = x(g.mujeres);
-          return (
-            <g key={g.etiqueta}>
-              {/* Barra varones: sale del centro hacia la IZQUIERDA. */}
-              <rect
-                x={bordeIzq - wVar}
-                y={y}
-                width={wVar}
-                height={altoBarra}
-                fill="url(#gente-varones)"
-                rx="2"
-              />
-              {/* Barra mujeres: sale del centro hacia la DERECHA. */}
-              <rect
-                x={bordeDer}
-                y={y}
-                width={wMuj}
-                height={altoBarra}
-                fill="url(#gente-mujeres)"
-                rx="2"
-              />
-              {/* Etiqueta de edad, centrada en el hueco del medio. */}
-              <text
-                x={(bordeIzq + bordeDer) / 2}
-                y={y + altoBarra / 2 + 4}
-                textAnchor="middle"
-                fill="var(--texto-2)"
-                fontFamily="var(--sans)"
-                fontSize="11"
-              >
-                {g.etiqueta}
+          {/* Líneas guía y etiquetas del eje X (población en miles) */}
+          {ticks.map((t) => (
+            <g key={`tick-${t}`}>
+              <line x1={bordeIzq - x(t)} x2={bordeIzq - x(t)} y1={MARGEN.top} y2={alto - MARGEN.bottom} stroke="#ffffff" strokeOpacity="0.06" />
+              <line x1={bordeDer + x(t)} x2={bordeDer + x(t)} y1={MARGEN.top} y2={alto - MARGEN.bottom} stroke="#ffffff" strokeOpacity="0.06" />
+              <text x={bordeIzq - x(t)} y={alto - MARGEN.bottom + 16} textAnchor="middle" fill="var(--texto-3)" fontFamily="var(--sans)" fontSize="11">
+                {Math.round(t / 1000)}k
+              </text>
+              <text x={bordeDer + x(t)} y={alto - MARGEN.bottom + 16} textAnchor="middle" fill="var(--texto-3)" fontFamily="var(--sans)" fontSize="11">
+                {Math.round(t / 1000)}k
               </text>
             </g>
-          );
-        })}
-      </svg>
+          ))}
+
+          {/* Barras (usan "display": los valores animados) + etiqueta de edad */}
+          {display.map((g, i) => {
+            const y = yDe(i);
+            const wVar = x(g.varones);
+            const wMuj = x(g.mujeres);
+            return (
+              <g key={g.etiqueta}>
+                <rect x={bordeIzq - wVar} y={y} width={wVar} height={altoBarra} fill="url(#gente-varones)" rx="2" />
+                <rect x={bordeDer} y={y} width={wMuj} height={altoBarra} fill="url(#gente-mujeres)" rx="2" />
+                <text x={(bordeIzq + bordeDer) / 2} y={y + altoBarra / 2 + 4} textAnchor="middle" fill="var(--texto-2)" fontFamily="var(--sans)" fontSize="11">
+                  {g.etiqueta}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* Marco de resaltado sobre la franja bajo el mouse */}
+          {hover && (
+            <rect
+              x={MARGEN.left}
+              y={yDe(hover.i) - 3}
+              width={anchoPlot}
+              height={ALTO_FILA - 2}
+              fill="none"
+              stroke="#ffffff"
+              strokeOpacity="0.22"
+              rx="3"
+            />
+          )}
+
+          {/* Capa transparente de detección de hover: un rect por fila que cubre
+              todo el ancho (incluido el centro), para que el tooltip aparezca al
+              pasar por cualquier parte de la franja de edad. Va al final para
+              quedar "arriba" y recibir los eventos del mouse. */}
+          {grupos.map((g, i) => (
+            <rect
+              key={`hit-${g.etiqueta}`}
+              x={MARGEN.left}
+              y={yDe(i) - 3}
+              width={anchoPlot}
+              height={ALTO_FILA - 2}
+              fill="transparent"
+              onMouseMove={alEntrar(i)}
+              onMouseEnter={alEntrar(i)}
+              onMouseLeave={alSalir}
+            />
+          ))}
+        </svg>
+
+        {/* --- Tooltip (cartelito). Solo se muestra si hay una franja activa. --- */}
+        {gHover && (
+          <div className="tooltip" style={{ left: hover.x, top: hover.y }}>
+            <div className="tt-edad">{gHover.rango}</div>
+            <div className="tt-fila">
+              <span>
+                <span className="punto" style={{ background: VERDE }} />
+                Varones
+              </span>
+              <span className="val">{fmt(gHover.varones)}</span>
+            </div>
+            <div className="tt-fila">
+              <span>
+                <span className="punto" style={{ background: CORAL }} />
+                Mujeres
+              </span>
+              <span className="val">{fmt(gHover.mujeres)}</span>
+            </div>
+            <div className="tt-fila tt-total">
+              <span>Total ({pctHover}% del país)</span>
+              <span className="val">{fmt(totalHover)}</span>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

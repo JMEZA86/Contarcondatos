@@ -200,3 +200,56 @@ input[type="range"]::-moz-range-thumb {
   display: block;
   margin-top: 8px;
 }
+
+/* Envoltorio con position:relative para poder ubicar el tooltip encima. */
+.grafico-wrap {
+  position: relative;
+}
+
+/* Tooltip (cartelito de datos). Se posiciona con JS siguiendo al puntero.
+   pointer-events:none para que no "tape" al mouse y no parpadee. */
+.tooltip {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  background: rgba(30, 24, 20, 0.96);
+  border: 1px solid #4a4038;
+  border-radius: 8px;
+  padding: 10px 12px;
+  min-width: 168px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--texto-1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transform: translate(-50%, calc(-100% - 14px)); /* centrado y arriba del puntero */
+}
+.tooltip .tt-edad {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+.tooltip .tt-fila {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  line-height: 1.6;
+}
+.tooltip .tt-fila .val {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+.tooltip .tt-total {
+  border-top: 1px solid #4a4038;
+  margin-top: 6px;
+  padding-top: 6px;
+  color: var(--texto-2);
+}
+.tooltip .punto {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: baseline;
+}
