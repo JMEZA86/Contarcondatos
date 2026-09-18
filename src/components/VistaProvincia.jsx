@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MiniLinea from "./MiniLinea.jsx";
+import MapaProvincias from "./MapaProvincias.jsx";
 import datos from "../../data/processed/provincias.json";
 
 const VERDE = "#1d9e75"; // varones
@@ -59,7 +60,14 @@ export default function VistaProvincia() {
           </select>
         </div>
 
-        <div className="fuerzas">
+        <div className="prov-grid">
+          {/* ---------- Mapa (izquierda) ---------- */}
+          <div className="prov-mapa">
+            <MapaProvincias seleccion={codigo} onSelect={setCodigo} />
+          </div>
+
+          {/* ---------- Tarjetas (derecha, apiladas) ---------- */}
+          <div className="prov-cards">
           {/* ---------- Esperanza de vida ---------- */}
           <article className="fuerza">
             <p className="fuerza-eyebrow" style={{ color: CORAL }}>
@@ -126,6 +134,7 @@ export default function VistaProvincia() {
               unidad="hijos por mujer"
             />
           </article>
+          </div>
         </div>
 
         <p className="fuente-mini">
