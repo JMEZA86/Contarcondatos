@@ -273,11 +273,62 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* El mini-gráfico de líneas ocupa el ancho de su tarjeta. */
+.mini-wrap {
+  position: relative;
+}
 .mini-linea {
   width: 100%;
   height: auto;
   display: block;
   margin-top: 6px;
+}
+.mini-linea rect[fill="transparent"] {
+  cursor: crosshair;
+}
+
+/* Tooltip del mini-gráfico (mismo lenguaje que el de la pirámide). */
+.mini-tooltip {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  background: rgba(30, 24, 20, 0.96);
+  border: 1px solid #4a4038;
+  border-radius: 8px;
+  padding: 8px 10px;
+  min-width: 130px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: var(--texto-1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transform: translate(-50%, calc(-100% - 12px));
+}
+.mini-tooltip .mt-anio {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.mini-tooltip .mt-fila {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  line-height: 1.6;
+}
+.mini-tooltip .mt-val {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.mini-tooltip .mt-unidad {
+  color: var(--texto-3);
+  font-size: 11px;
+  margin-top: 4px;
+}
+.mini-tooltip .punto {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
 }
 
 /* --- Pie de fuente --- */

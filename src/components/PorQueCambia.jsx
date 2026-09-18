@@ -62,6 +62,7 @@ export default function PorQueCambia() {
               dominioY={[0, 2.4]}
               referencia={{ valor: fec.nivel_reemplazo, label: "Reemplazo (2,1)" }}
               formato={coma}
+              unidad="hijos por mujer"
             />
           </article>
 
@@ -96,6 +97,7 @@ export default function PorQueCambia() {
               ]}
               dominioY={[70, 86]}
               formato={coma}
+              unidad="años al nacer"
             />
           </article>
         </div>
