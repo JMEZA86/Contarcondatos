@@ -1,0 +1,1112 @@
+{
+  "meta": {
+    "titulo": "Indicadores por provincia — esperanza de vida y fecundidad",
+    "fuente": "INDEC. Proyecciones por jurisdicción 2022–2040 (base Censo 2022).",
+    "anios": [
+      2025,
+      2030,
+      2035,
+      2040
+    ]
+  },
+  "nacional": {
+    "esperanza": [
+      {
+        "anio": 2025,
+        "varones": 75.7,
+        "mujeres": 81.1
+      },
+      {
+        "anio": 2030,
+        "varones": 76.7,
+        "mujeres": 81.7
+      },
+      {
+        "anio": 2035,
+        "varones": 77.7,
+        "mujeres": 82.4
+      },
+      {
+        "anio": 2040,
+        "varones": 78.7,
+        "mujeres": 83.0
+      }
+    ],
+    "fecundidad": [
+      {
+        "anio": 2025,
+        "valor": 1.27
+      },
+      {
+        "anio": 2030,
+        "valor": 1.24
+      },
+      {
+        "anio": 2035,
+        "valor": 1.32
+      },
+      {
+        "anio": 2040,
+        "valor": 1.4
+      }
+    ]
+  },
+  "provincias": [
+    {
+      "codigo": 6,
+      "nombre": "Buenos Aires",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 75.44,
+          "mujeres": 80.77
+        },
+        {
+          "anio": 2030,
+          "varones": 76.51,
+          "mujeres": 81.45
+        },
+        {
+          "anio": 2035,
+          "varones": 77.54,
+          "mujeres": 82.1
+        },
+        {
+          "anio": 2040,
+          "varones": 78.53,
+          "mujeres": 82.74
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.24
+        },
+        {
+          "anio": 2030,
+          "valor": 1.21
+        },
+        {
+          "anio": 2035,
+          "valor": 1.3
+        },
+        {
+          "anio": 2040,
+          "valor": 1.38
+        }
+      ]
+    },
+    {
+      "codigo": 10,
+      "nombre": "Catamarca",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 76.96,
+          "mujeres": 81.66
+        },
+        {
+          "anio": 2030,
+          "varones": 77.92,
+          "mujeres": 82.29
+        },
+        {
+          "anio": 2035,
+          "varones": 78.85,
+          "mujeres": 82.91
+        },
+        {
+          "anio": 2040,
+          "varones": 79.74,
+          "mujeres": 83.51
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.17
+        },
+        {
+          "anio": 2030,
+          "valor": 1.19
+        },
+        {
+          "anio": 2035,
+          "valor": 1.28
+        },
+        {
+          "anio": 2040,
+          "valor": 1.35
+        }
+      ]
+    },
+    {
+      "codigo": 22,
+      "nombre": "Chaco",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 72.41,
+          "mujeres": 77.98
+        },
+        {
+          "anio": 2030,
+          "varones": 73.69,
+          "mujeres": 78.79
+        },
+        {
+          "anio": 2035,
+          "varones": 74.92,
+          "mujeres": 79.57
+        },
+        {
+          "anio": 2040,
+          "varones": 76.09,
+          "mujeres": 80.34
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.71
+        },
+        {
+          "anio": 2030,
+          "valor": 1.62
+        },
+        {
+          "anio": 2035,
+          "valor": 1.56
+        },
+        {
+          "anio": 2040,
+          "valor": 1.54
+        }
+      ]
+    },
+    {
+      "codigo": 26,
+      "nombre": "Chubut",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 76.15,
+          "mujeres": 82.79
+        },
+        {
+          "anio": 2030,
+          "varones": 77.17,
+          "mujeres": 83.37
+        },
+        {
+          "anio": 2035,
+          "varones": 78.15,
+          "mujeres": 83.93
+        },
+        {
+          "anio": 2040,
+          "varones": 79.09,
+          "mujeres": 84.48
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.17
+        },
+        {
+          "anio": 2030,
+          "valor": 1.19
+        },
+        {
+          "anio": 2035,
+          "valor": 1.28
+        },
+        {
+          "anio": 2040,
+          "valor": 1.35
+        }
+      ]
+    },
+    {
+      "codigo": 2,
+      "nombre": "Ciudad Autónoma de Buenos Aires",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 78.07,
+          "mujeres": 83.11
+        },
+        {
+          "anio": 2030,
+          "varones": 78.95,
+          "mujeres": 83.67
+        },
+        {
+          "anio": 2035,
+          "varones": 79.81,
+          "mujeres": 84.22
+        },
+        {
+          "anio": 2040,
+          "varones": 80.63,
+          "mujeres": 84.76
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 0.97
+        },
+        {
+          "anio": 2030,
+          "valor": 0.98
+        },
+        {
+          "anio": 2035,
+          "valor": 1.26
+        },
+        {
+          "anio": 2040,
+          "valor": 1.34
+        }
+      ]
+    },
+    {
+      "codigo": 14,
+      "nombre": "Córdoba",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 76.41,
+          "mujeres": 81.61
+        },
+        {
+          "anio": 2030,
+          "varones": 77.41,
+          "mujeres": 82.24
+        },
+        {
+          "anio": 2035,
+          "varones": 78.38,
+          "mujeres": 82.86
+        },
+        {
+          "anio": 2040,
+          "varones": 79.3,
+          "mujeres": 83.46
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.22
+        },
+        {
+          "anio": 2030,
+          "valor": 1.21
+        },
+        {
+          "anio": 2035,
+          "valor": 1.3
+        },
+        {
+          "anio": 2040,
+          "valor": 1.37
+        }
+      ]
+    },
+    {
+      "codigo": 18,
+      "nombre": "Corrientes",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 74.36,
+          "mujeres": 79.62
+        },
+        {
+          "anio": 2030,
+          "varones": 75.5,
+          "mujeres": 80.35
+        },
+        {
+          "anio": 2035,
+          "varones": 76.6,
+          "mujeres": 81.06
+        },
+        {
+          "anio": 2040,
+          "varones": 77.65,
+          "mujeres": 81.75
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.34
+        },
+        {
+          "anio": 2030,
+          "valor": 1.31
+        },
+        {
+          "anio": 2035,
+          "valor": 1.37
+        },
+        {
+          "anio": 2040,
+          "valor": 1.42
+        }
+      ]
+    },
+    {
+      "codigo": 30,
+      "nombre": "Entre Ríos",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 75.42,
+          "mujeres": 81.19
+        },
+        {
+          "anio": 2030,
+          "varones": 76.49,
+          "mujeres": 81.84
+        },
+        {
+          "anio": 2035,
+          "varones": 77.52,
+          "mujeres": 82.48
+        },
+        {
+          "anio": 2040,
+          "varones": 78.51,
+          "mujeres": 83.1
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.2
+        },
+        {
+          "anio": 2030,
+          "valor": 1.2
+        },
+        {
+          "anio": 2035,
+          "valor": 1.28
+        },
+        {
+          "anio": 2040,
+          "valor": 1.36
+        }
+      ]
+    },
+    {
+      "codigo": 34,
+      "nombre": "Formosa",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 73.42,
+          "mujeres": 78.81
+        },
+        {
+          "anio": 2030,
+          "varones": 74.63,
+          "mujeres": 79.58
+        },
+        {
+          "anio": 2035,
+          "varones": 75.79,
+          "mujeres": 80.32
+        },
+        {
+          "anio": 2040,
+          "varones": 76.9,
+          "mujeres": 81.05
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.56
+        },
+        {
+          "anio": 2030,
+          "valor": 1.53
+        },
+        {
+          "anio": 2035,
+          "valor": 1.52
+        },
+        {
+          "anio": 2040,
+          "valor": 1.51
+        }
+      ]
+    },
+    {
+      "codigo": 38,
+      "nombre": "Jujuy",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 75.38,
+          "mujeres": 80.58
+        },
+        {
+          "anio": 2030,
+          "varones": 76.45,
+          "mujeres": 81.27
+        },
+        {
+          "anio": 2035,
+          "varones": 77.48,
+          "mujeres": 81.93
+        },
+        {
+          "anio": 2040,
+          "varones": 78.47,
+          "mujeres": 82.58
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.15
+        },
+        {
+          "anio": 2030,
+          "valor": 1.19
+        },
+        {
+          "anio": 2035,
+          "valor": 1.27
+        },
+        {
+          "anio": 2040,
+          "valor": 1.35
+        }
+      ]
+    },
+    {
+      "codigo": 42,
+      "nombre": "La Pampa",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 78.08,
+          "mujeres": 83.3
+        },
+        {
+          "anio": 2030,
+          "varones": 78.97,
+          "mujeres": 83.86
+        },
+        {
+          "anio": 2035,
+          "varones": 79.82,
+          "mujeres": 84.4
+        },
+        {
+          "anio": 2040,
+          "varones": 80.64,
+          "mujeres": 84.92
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.15
+        },
+        {
+          "anio": 2030,
+          "valor": 1.19
+        },
+        {
+          "anio": 2035,
+          "valor": 1.27
+        },
+        {
+          "anio": 2040,
+          "valor": 1.35
+        }
+      ]
+    },
+    {
+      "codigo": 46,
+      "nombre": "La Rioja",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 76.07,
+          "mujeres": 80.74
+        },
+        {
+          "anio": 2030,
+          "varones": 77.1,
+          "mujeres": 81.42
+        },
+        {
+          "anio": 2035,
+          "varones": 78.08,
+          "mujeres": 82.07
+        },
+        {
+          "anio": 2040,
+          "varones": 79.03,
+          "mujeres": 82.71
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.2
+        },
+        {
+          "anio": 2030,
+          "valor": 1.2
+        },
+        {
+          "anio": 2035,
+          "valor": 1.28
+        },
+        {
+          "anio": 2040,
+          "valor": 1.36
+        }
+      ]
+    },
+    {
+      "codigo": 50,
+      "nombre": "Mendoza",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 76.54,
+          "mujeres": 81.79
+        },
+        {
+          "anio": 2030,
+          "varones": 77.53,
+          "mujeres": 82.41
+        },
+        {
+          "anio": 2035,
+          "varones": 78.49,
+          "mujeres": 83.03
+        },
+        {
+          "anio": 2040,
+          "varones": 79.4,
+          "mujeres": 83.62
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.23
+        },
+        {
+          "anio": 2030,
+          "valor": 1.21
+        },
+        {
+          "anio": 2035,
+          "valor": 1.3
+        },
+        {
+          "anio": 2040,
+          "valor": 1.38
+        }
+      ]
+    },
+    {
+      "codigo": 54,
+      "nombre": "Misiones",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 74.39,
+          "mujeres": 79.17
+        },
+        {
+          "anio": 2030,
+          "varones": 75.53,
+          "mujeres": 79.92
+        },
+        {
+          "anio": 2035,
+          "varones": 76.63,
+          "mujeres": 80.65
+        },
+        {
+          "anio": 2040,
+          "varones": 77.68,
+          "mujeres": 81.36
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.69
+        },
+        {
+          "anio": 2030,
+          "valor": 1.59
+        },
+        {
+          "anio": 2035,
+          "valor": 1.55
+        },
+        {
+          "anio": 2040,
+          "valor": 1.53
+        }
+      ]
+    },
+    {
+      "codigo": 58,
+      "nombre": "Neuquén",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 76.76,
+          "mujeres": 82.27
+        },
+        {
+          "anio": 2030,
+          "varones": 77.73,
+          "mujeres": 82.87
+        },
+        {
+          "anio": 2035,
+          "varones": 78.68,
+          "mujeres": 83.46
+        },
+        {
+          "anio": 2040,
+          "varones": 79.58,
+          "mujeres": 84.03
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.21
+        },
+        {
+          "anio": 2030,
+          "valor": 1.2
+        },
+        {
+          "anio": 2035,
+          "valor": 1.29
+        },
+        {
+          "anio": 2040,
+          "valor": 1.37
+        }
+      ]
+    },
+    {
+      "codigo": 62,
+      "nombre": "Río Negro",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 77.0,
+          "mujeres": 82.43
+        },
+        {
+          "anio": 2030,
+          "varones": 77.96,
+          "mujeres": 83.03
+        },
+        {
+          "anio": 2035,
+          "varones": 78.88,
+          "mujeres": 83.61
+        },
+        {
+          "anio": 2040,
+          "varones": 79.77,
+          "mujeres": 84.17
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.18
+        },
+        {
+          "anio": 2030,
+          "valor": 1.19
+        },
+        {
+          "anio": 2035,
+          "valor": 1.28
+        },
+        {
+          "anio": 2040,
+          "valor": 1.36
+        }
+      ]
+    },
+    {
+      "codigo": 66,
+      "nombre": "Salta",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 75.33,
+          "mujeres": 80.36
+        },
+        {
+          "anio": 2030,
+          "varones": 76.4,
+          "mujeres": 81.06
+        },
+        {
+          "anio": 2035,
+          "varones": 77.44,
+          "mujeres": 81.74
+        },
+        {
+          "anio": 2040,
+          "varones": 78.43,
+          "mujeres": 82.39
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.3
+        },
+        {
+          "anio": 2030,
+          "valor": 1.27
+        },
+        {
+          "anio": 2035,
+          "valor": 1.33
+        },
+        {
+          "anio": 2040,
+          "valor": 1.39
+        }
+      ]
+    },
+    {
+      "codigo": 70,
+      "nombre": "San Juan",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 76.44,
+          "mujeres": 81.09
+        },
+        {
+          "anio": 2030,
+          "varones": 77.44,
+          "mujeres": 81.75
+        },
+        {
+          "anio": 2035,
+          "varones": 78.4,
+          "mujeres": 82.39
+        },
+        {
+          "anio": 2040,
+          "varones": 79.32,
+          "mujeres": 83.02
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.37
+        },
+        {
+          "anio": 2030,
+          "valor": 1.33
+        },
+        {
+          "anio": 2035,
+          "valor": 1.4
+        },
+        {
+          "anio": 2040,
+          "valor": 1.45
+        }
+      ]
+    },
+    {
+      "codigo": 74,
+      "nombre": "San Luis",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 75.49,
+          "mujeres": 80.81
+        },
+        {
+          "anio": 2030,
+          "varones": 76.55,
+          "mujeres": 81.49
+        },
+        {
+          "anio": 2035,
+          "varones": 77.58,
+          "mujeres": 82.14
+        },
+        {
+          "anio": 2040,
+          "varones": 78.56,
+          "mujeres": 82.78
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.17
+        },
+        {
+          "anio": 2030,
+          "valor": 1.19
+        },
+        {
+          "anio": 2035,
+          "valor": 1.28
+        },
+        {
+          "anio": 2040,
+          "valor": 1.35
+        }
+      ]
+    },
+    {
+      "codigo": 78,
+      "nombre": "Santa Cruz",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 75.71,
+          "mujeres": 80.64
+        },
+        {
+          "anio": 2030,
+          "varones": 76.77,
+          "mujeres": 81.32
+        },
+        {
+          "anio": 2035,
+          "varones": 77.78,
+          "mujeres": 81.99
+        },
+        {
+          "anio": 2040,
+          "varones": 78.74,
+          "mujeres": 82.63
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.18
+        },
+        {
+          "anio": 2030,
+          "valor": 1.19
+        },
+        {
+          "anio": 2035,
+          "valor": 1.28
+        },
+        {
+          "anio": 2040,
+          "valor": 1.36
+        }
+      ]
+    },
+    {
+      "codigo": 82,
+      "nombre": "Santa Fe",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 75.6,
+          "mujeres": 81.18
+        },
+        {
+          "anio": 2030,
+          "varones": 76.66,
+          "mujeres": 81.84
+        },
+        {
+          "anio": 2035,
+          "varones": 77.68,
+          "mujeres": 82.48
+        },
+        {
+          "anio": 2040,
+          "varones": 78.65,
+          "mujeres": 83.1
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.28
+        },
+        {
+          "anio": 2030,
+          "valor": 1.27
+        },
+        {
+          "anio": 2035,
+          "valor": 1.33
+        },
+        {
+          "anio": 2040,
+          "valor": 1.39
+        }
+      ]
+    },
+    {
+      "codigo": 86,
+      "nombre": "Santiago del Estero",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 74.04,
+          "mujeres": 79.84
+        },
+        {
+          "anio": 2030,
+          "varones": 75.2,
+          "mujeres": 80.56
+        },
+        {
+          "anio": 2035,
+          "varones": 76.32,
+          "mujeres": 81.26
+        },
+        {
+          "anio": 2040,
+          "varones": 77.4,
+          "mujeres": 81.94
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.26
+        },
+        {
+          "anio": 2030,
+          "valor": 1.22
+        },
+        {
+          "anio": 2035,
+          "valor": 1.31
+        },
+        {
+          "anio": 2040,
+          "valor": 1.39
+        }
+      ]
+    },
+    {
+      "codigo": 94,
+      "nombre": "Tierra del Fuego, Antártida e Islas del Atlántico Sur",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 78.33,
+          "mujeres": 83.43
+        },
+        {
+          "anio": 2030,
+          "varones": 79.2,
+          "mujeres": 83.98
+        },
+        {
+          "anio": 2035,
+          "varones": 80.04,
+          "mujeres": 84.51
+        },
+        {
+          "anio": 2040,
+          "varones": 80.84,
+          "mujeres": 85.03
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 0.91
+        },
+        {
+          "anio": 2030,
+          "valor": 1.01
+        },
+        {
+          "anio": 2035,
+          "valor": 1.26
+        },
+        {
+          "anio": 2040,
+          "valor": 1.34
+        }
+      ]
+    },
+    {
+      "codigo": 90,
+      "nombre": "Tucumán",
+      "esperanza": [
+        {
+          "anio": 2025,
+          "varones": 74.86,
+          "mujeres": 80.21
+        },
+        {
+          "anio": 2030,
+          "varones": 75.97,
+          "mujeres": 80.92
+        },
+        {
+          "anio": 2035,
+          "varones": 77.03,
+          "mujeres": 81.6
+        },
+        {
+          "anio": 2040,
+          "varones": 78.05,
+          "mujeres": 82.26
+        }
+      ],
+      "fecundidad": [
+        {
+          "anio": 2025,
+          "valor": 1.22
+        },
+        {
+          "anio": 2030,
+          "valor": 1.21
+        },
+        {
+          "anio": 2035,
+          "valor": 1.29
+        },
+        {
+          "anio": 2040,
+          "valor": 1.37
+        }
+      ]
+    }
+  ]
+}

@@ -111,8 +111,10 @@ export default function MiniLinea({
                   r={hover && hover.i === i ? 4.6 : 3.2}
                   fill={serie.color}
                 />
-                {/* Etiqueta de valor solo en los extremos, para no saturar. */}
-                {(i === 0 || i === serie.puntos.length - 1) && (
+                {/* Etiqueta de valor solo en los extremos, para no saturar.
+                    Una serie puede pedir no etiquetar (etiquetar:false), útil
+                    cuando es una línea de comparación que se pisaría con otra. */}
+                {(i === 0 || i === serie.puntos.length - 1) && serie.etiquetar !== false && (
                   <text
                     x={x(p.anio)}
                     y={y(p.valor) - 9}

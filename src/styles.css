@@ -272,6 +272,49 @@ input[type="range"]::-moz-range-thumb {
   color: var(--texto-1);
 }
 
+/* --- Capa 4: selector de provincia --- */
+.selector-prov {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.selector-prov label {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  font-weight: 600;
+}
+.selector-prov select {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 600;
+  color: var(--texto-1);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #4a4038;
+  border-radius: 8px;
+  padding: 6px 38px 6px 14px;
+  cursor: pointer;
+  /* flechita custom */
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23d85a30' stroke-width='2.5'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.selector-prov select:focus {
+  outline: none;
+  border-color: var(--coral);
+}
+.selector-prov option {
+  font-family: var(--sans);
+  font-size: 15px;
+  background: #1e1814;
+  color: var(--texto-1);
+}
+
 /* --- Capa 3: sostén demográfico proyectado --- */
 .sosten-layout {
   display: grid;
