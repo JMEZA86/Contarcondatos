@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "titulo": "Indicadores demográficos — Total del país",
+    "fuente": "INDEC. Estimaciones y proyecciones de población 2022–2040, base Censo 2022 (cuadros 3, 5 y 6).",
+    "anios": [
+      2025,
+      2030,
+      2035,
+      2040
+    ],
+    "nota": "Los cuadros de INDEC solo publican estos 4 años."
+  },
+  "fecundidad": {
+    "unidad": "hijos por mujer",
+    "nivel_reemplazo": 2.1,
+    "descripcion": "Tasa global de fecundidad (TGF): hijos promedio por mujer. Debajo de 2,1 la población no se renueva sola.",
+    "serie": [
+      {
+        "anio": 2025,
+        "valor": 1.27
+      },
+      {
+        "anio": 2030,
+        "valor": 1.24
+      },
+      {
+        "anio": 2035,
+        "valor": 1.32
+      },
+      {
+        "anio": 2040,
+        "valor": 1.4
+      }
+    ]
+  },
+  "natalidad": {
+    "unidad": "nacimientos por mil habitantes",
+    "serie": [
+      {
+        "anio": 2025,
+        "valor": 9.5
+      },
+      {
+        "anio": 2030,
+        "valor": 9.3
+      },
+      {
+        "anio": 2035,
+        "valor": 9.9
+      },
+      {
+        "anio": 2040,
+        "valor": 10.2
+      }
+    ]
+  },
+  "mortalidad": {
+    "unidad": "muertes por mil habitantes",
+    "serie": [
+      {
+        "anio": 2025,
+        "valor": 7.6
+      },
+      {
+        "anio": 2030,
+        "valor": 7.9
+      },
+      {
+        "anio": 2035,
+        "valor": 8.3
+      },
+      {
+        "anio": 2040,
+        "valor": 8.7
+      }
+    ]
+  },
+  "esperanza_vida": {
+    "unidad": "años al nacer",
+    "descripcion": "Cuántos años se espera que viva, en promedio, una persona nacida ese año.",
+    "serie": [
+      {
+        "anio": 2025,
+        "varones": 75.7,
+        "mujeres": 81.1
+      },
+      {
+        "anio": 2030,
+        "varones": 76.7,
+        "mujeres": 81.7
+      },
+      {
+        "anio": 2035,
+        "varones": 77.7,
+        "mujeres": 82.4
+      },
+      {
+        "anio": 2040,
+        "varones": 78.7,
+        "mujeres": 83.0
+      }
+    ]
+  }
+}

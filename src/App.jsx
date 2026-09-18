@@ -1,14 +1,20 @@
 import PiramidePoblacional from "./components/PiramidePoblacional.jsx";
+import PorQueCambia from "./components/PorQueCambia.jsx";
 
-// Componente principal. La vista de la pirámide se arma en dos columnas
-// (texto+controles a la izquierda, gráfico a la derecha) que entran en una
-// sola pantalla en desktop. Más adelante se suman las otras capas debajo.
+// Componente principal. La narrativa se lee de arriba a abajo:
+//   1) Hero: la pirámide interactiva (la forma cambia)
+//   2) Por qué cambia: fecundidad + esperanza de vida
+// Más adelante se suman el ratio previsional y la vista por provincia.
 export default function App() {
   return (
-    <main className="pagina">
-      <div className="contenedor">
-        <PiramidePoblacional />
-      </div>
-    </main>
+    <>
+      <main className="pagina">
+        <div className="contenedor">
+          <PiramidePoblacional />
+        </div>
+      </main>
+
+      <PorQueCambia />
+    </>
   );
 }
