@@ -239,17 +239,34 @@ export default function PiramidePoblacional() {
           role="img"
           aria-label={`Pirámide de población de Argentina en ${anio}`}
         >
-          {/* PATRONES de siluetas humanas (mosaico 12x16 con cabeza + cuerpo). */}
+          {/* PATRONES de siluetas humanas. Cada personita = una porción de
+              población (cabeza + cuerpo). El mosaico se ALINEA con la grilla de
+              barras: el offset horizontal arranca en el eje central y el
+              vertical en el margen superior, de modo que en cada barra las
+              personas se ven ENTERAS (no cortadas por la mitad). El largo exacto
+              de la barra sigue siendo el dato — la textura no lo cambia. */}
           <defs>
-            <pattern id="gente-varones" width="12" height="16" patternUnits="userSpaceOnUse">
-              <rect width="12" height="16" fill={VERDE} opacity="0.18" />
-              <circle cx="6" cy="4" r="2.1" fill={VERDE} />
-              <rect x="3.4" y="6.6" width="5.2" height="7" rx="2.4" fill={VERDE} />
+            <pattern
+              id="gente-varones"
+              x={bordeIzq}
+              y={MARGEN.top}
+              width="12"
+              height={ALTO_FILA}
+              patternUnits="userSpaceOnUse"
+            >
+              <circle cx="6" cy="4.2" r="2.7" fill={VERDE} />
+              <path d="M3 18 C3 11, 4.4 6.9, 6 6.9 C7.6 6.9, 9 11, 9 18 Z" fill={VERDE} />
             </pattern>
-            <pattern id="gente-mujeres" width="12" height="16" patternUnits="userSpaceOnUse">
-              <rect width="12" height="16" fill={CORAL} opacity="0.18" />
-              <circle cx="6" cy="4" r="2.1" fill={CORAL} />
-              <rect x="3.4" y="6.6" width="5.2" height="7" rx="2.4" fill={CORAL} />
+            <pattern
+              id="gente-mujeres"
+              x={bordeDer}
+              y={MARGEN.top}
+              width="12"
+              height={ALTO_FILA}
+              patternUnits="userSpaceOnUse"
+            >
+              <circle cx="6" cy="4.2" r="2.7" fill={CORAL} />
+              <path d="M3 18 C3 11, 4.4 6.9, 6 6.9 C7.6 6.9, 9 11, 9 18 Z" fill={CORAL} />
             </pattern>
           </defs>
 
