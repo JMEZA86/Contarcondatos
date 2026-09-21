@@ -3,6 +3,7 @@ import piramide from "../../data/processed/piramide_nacional.json";
 import ratio from "../../data/processed/ratio_sosten.json";
 import provinciasData from "../../data/processed/provincias.json";
 import { usePaleta } from "../paleta.jsx";
+import { FUENTES, LinkFuente } from "../fuentes.jsx";
 
 const fmt = (n) => Math.round(n).toLocaleString("es-AR");
 const coma1 = (v) => v.toFixed(1).replace(".", ",");
@@ -128,9 +129,10 @@ export default function TuHistoria() {
         </div>
 
         <p className="fuente-mini">
-          Cálculos propios sobre INDEC (proyecciones 2022–2040, base Censo 2022).
-          La esperanza de vida es al nacer, un indicador de la provincia — no una
-          predicción individual.
+          Cálculos propios sobre{" "}
+          <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente> (proyecciones
+          2022–2040, base Censo 2022). La esperanza de vida es al nacer, un
+          indicador de la provincia — no una predicción individual.
         </p>
       </div>
     </section>

@@ -179,7 +179,20 @@ body {
   line-height: 1.5;
   color: var(--texto-3);
   margin-top: 18px;
-  max-width: 44ch;
+  max-width: 46ch;
+}
+
+/* Enlaces a las fuentes de datos dentro de las notas al pie. */
+.link-fuente {
+  color: var(--texto-2);
+  text-decoration: underline;
+  text-decoration-color: rgba(216, 90, 48, 0.5);
+  text-underline-offset: 2px;
+  transition: color 120ms ease;
+}
+.link-fuente:hover {
+  color: var(--coral-claro);
+  text-decoration-color: var(--coral);
 }
 
 /* --- Control del año (slider) --- */

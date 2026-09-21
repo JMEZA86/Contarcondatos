@@ -3,6 +3,7 @@ import MiniLinea from "./MiniLinea.jsx";
 import MapaProvincias from "./MapaProvincias.jsx";
 import datos from "../../data/processed/provincias.json";
 import { usePaleta } from "../paleta.jsx";
+import { FUENTES, LinkFuente } from "../fuentes.jsx";
 
 const GRIS = "#7a7266"; // país (comparación) — gris, no cambia con el modo daltónico
 
@@ -138,8 +139,17 @@ export default function VistaProvincia() {
         </div>
 
         <p className="fuente-mini">
-          Fuente: INDEC. Proyecciones de población por jurisdicción 2022–2040
-          (base Censo 2022). Los cuadros publican los años 2025, 2030, 2035 y 2040.
+          Fuente:{" "}
+          <LinkFuente href={FUENTES.indec}>
+            INDEC — Proyecciones por jurisdicción 2022–2040
+          </LinkFuente>{" "}
+          (base Censo 2022; años 2025, 2030, 2035 y 2040). Mapa:{" "}
+          <LinkFuente href={FUENTES.georef}>
+            Georef (Ministerio del Interior)
+          </LinkFuente>
+          . El nivel de reemplazo (2,1) es el estándar demográfico para
+          poblaciones de baja mortalidad (
+          <LinkFuente href={FUENTES.onu}>División de Población, ONU</LinkFuente>).
         </p>
       </div>
     </section>

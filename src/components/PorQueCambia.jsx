@@ -1,6 +1,7 @@
 import MiniLinea from "./MiniLinea.jsx";
 import indicadores from "../../data/processed/indicadores_nacionales.json";
 import { usePaleta } from "../paleta.jsx";
+import { FUENTES, LinkFuente } from "../fuentes.jsx";
 
 // Formatea un número con coma decimal, estilo argentino (1.4 -> "1,4").
 const coma = (v) => v.toFixed(1).replace(".", ",");
@@ -101,9 +102,14 @@ export default function PorQueCambia() {
         </div>
 
         <p className="fuente-mini">
-          Fuente: INDEC. Estimaciones y proyecciones de población 2022–2040
+          Fuente:{" "}
+          <LinkFuente href={FUENTES.indec}>
+            INDEC — Estimaciones y proyecciones de población 2022–2040
+          </LinkFuente>{" "}
           (cuadros de fecundidad y esperanza de vida). Los cuadros publican solo
-          los años 2025, 2030, 2035 y 2040.
+          los años 2025, 2030, 2035 y 2040. El nivel de reemplazo (2,1 hijos por
+          mujer) es el estándar demográfico para poblaciones de baja mortalidad
+          (<LinkFuente href={FUENTES.onu}>División de Población, ONU</LinkFuente>).
         </p>
       </div>
     </section>

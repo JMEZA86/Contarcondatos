@@ -5,6 +5,7 @@ import { scaleLinear, easeCubicOut } from "d3";
 // Vite lo empaqueta automáticamente; queda disponible como un objeto JS.
 import datos from "../../data/processed/piramide_nacional.json";
 import { usePaleta } from "../paleta.jsx";
+import { FUENTES, LinkFuente } from "../fuentes.jsx";
 
 // ==========================================================================
 // Constantes de layout del gráfico.
@@ -225,8 +226,11 @@ export default function PiramidePoblacional() {
       </p>
 
       <p className="fuente-mini">
-        Fuente: INDEC. Estimaciones y proyecciones de población 2022–2040 (base
-        Censo 2022). Edades en quinquenios; “100+” incluye 100 años y más.
+        Fuente:{" "}
+        <LinkFuente href={FUENTES.indec}>
+          INDEC — Estimaciones y proyecciones de población 2022–2040
+        </LinkFuente>{" "}
+        (base Censo 2022). Edades en quinquenios; “100+” incluye 100 años y más.
       </p>
       </div>
       {/* ---------- Fin columna izquierda ---------- */}

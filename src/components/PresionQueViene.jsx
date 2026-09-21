@@ -1,6 +1,7 @@
 import MiniLinea from "./MiniLinea.jsx";
 import ratio from "../../data/processed/ratio_sosten.json";
 import { usePaleta } from "../paleta.jsx";
+import { FUENTES, LinkFuente } from "../fuentes.jsx";
 const coma = (v) => v.toFixed(1).replace(".", ",");
 
 // ==========================================================================
@@ -75,11 +76,18 @@ export default function PresionQueViene() {
         </div>
 
         <p className="fuente-mini">
-          Gráfico: elaboración propia sobre INDEC (proyecciones 2022–2040). Es el
-          sostén demográfico <em>potencial</em> — toda la población en edad de
-          trabajar, no solo quienes aportan. El ratio del sistema previsional real
-          (ANSES) se mantuvo estable entre 2009 y 2023; lo que empeora es la
-          presión demográfica de fondo.
+          Gráfico: elaboración propia sobre{" "}
+          <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente> (proyecciones
+          2022–2040). Es el sostén demográfico <em>potencial</em> — toda la
+          población en edad de trabajar, no solo quienes aportan. El ratio del
+          sistema previsional real (
+          <LinkFuente href={FUENTES.anses}>ANSES, Anuario Cap. 4</LinkFuente>) se
+          mantuvo estable entre 2009 y 2023. La cobertura del sistema (51,6%)
+          surge de la{" "}
+          <LinkFuente href={FUENTES.opc}>
+            OPC — Estado de situación del SIPA
+          </LinkFuente>
+          .
         </p>
       </div>
     </section>
