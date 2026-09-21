@@ -142,7 +142,16 @@ body {
   font-size: clamp(19px, 1.8vw, 24px);
   letter-spacing: -0.01em;
   color: var(--coral-claro);
+  margin-bottom: 6px;
+}
+
+/* Línea de ayuda chica bajo el título de sección (pista de uso del slider). */
+.seccion-ayuda {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--texto-3);
   margin-bottom: 12px;
+  max-width: 40ch;
 }
 
 /* Fuente en chico, al pie de la columna izquierda. */
