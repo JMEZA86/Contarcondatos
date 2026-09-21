@@ -2,6 +2,7 @@ import PiramidePoblacional from "./components/PiramidePoblacional.jsx";
 import PorQueCambia from "./components/PorQueCambia.jsx";
 import PresionQueViene from "./components/PresionQueViene.jsx";
 import VistaProvincia from "./components/VistaProvincia.jsx";
+import TuHistoria from "./components/TuHistoria.jsx";
 import BotonPantalla from "./components/BotonPantalla.jsx";
 
 // Componente principal. La narrativa se lee de arriba a abajo:
@@ -21,6 +22,7 @@ export default function App() {
       <PorQueCambia />
       <PresionQueViene />
       <VistaProvincia />
+      <TuHistoria />
 
       <BotonPantalla />
     </>

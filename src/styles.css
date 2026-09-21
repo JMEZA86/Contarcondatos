@@ -339,6 +339,112 @@ input[type="range"]::-moz-range-thumb {
   color: var(--texto-1);
 }
 
+/* ==========================================================================
+   Sección "¿Y vos?" — personalización
+   ========================================================================== */
+.vos-controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin: 8px 0 28px;
+}
+.vos-campo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.4vw, 28px);
+  color: var(--texto-2);
+}
+.vos-campo input,
+.vos-campo select {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 600;
+  color: var(--texto-1);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #4a4038;
+  border-radius: 8px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+.vos-campo input {
+  width: 3.4em;
+  text-align: center;
+  cursor: text;
+  -moz-appearance: textfield;
+}
+.vos-campo input::-webkit-outer-spin-button,
+.vos-campo input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.vos-campo select {
+  appearance: none;
+  padding-right: 30px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23d85a30' stroke-width='2.5'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+.vos-campo input:focus,
+.vos-campo select:focus {
+  outline: none;
+  border-color: var(--coral);
+}
+
+/* Toggle Mujer / Varón */
+.vos-sexo {
+  display: inline-flex;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #4a4038;
+}
+.vos-sexo button {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto-2);
+  background: transparent;
+  border: none;
+  border-right: 1px solid #4a4038;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+.vos-sexo button:last-child {
+  border-right: none;
+}
+.vos-sexo button.activo {
+  color: #15110e;
+}
+
+/* Resultado personalizado */
+.vos-resultado {
+  max-width: 60ch;
+}
+.vos-frase {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3.4vw, 40px);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--texto-1);
+  margin-bottom: 16px;
+}
+.vos-frase .vos-num {
+  font-weight: 900;
+  font-size: 1.25em;
+}
+.vos-detalle {
+  font-family: var(--sans);
+  font-size: clamp(15px, 1.5vw, 18px);
+  line-height: 1.6;
+  color: var(--texto-2);
+  margin-bottom: 12px;
+}
+.vos-detalle strong {
+  color: var(--texto-1);
+}
+
 /* --- Capa 4: layout mapa + tarjetas --- */
 .prov-grid {
   display: grid;
