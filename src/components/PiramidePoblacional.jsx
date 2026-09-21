@@ -174,11 +174,9 @@ export default function PiramidePoblacional() {
       <div className="piramide-controles">
       {/* --- Título e introducción (antes estaban en un hero aparte) --- */}
       <p className="kicker">Argentina · Transición demográfica</p>
-      <h1 className="titulo">La Pirámide Invertida</h1>
+      <h1 className="titulo">La Argentina que envejece</h1>
       <p className="bajada">
-        Argentina nace menos y vive más. Cada vez hay menos gente joven
-        sosteniendo a más gente mayor. Movés el año y ves cómo cambia la forma
-        de la población, con datos oficiales de INDEC.
+        Nacer menos, vivir más: la ecuación que cambia el país.
       </p>
 
       <h2 className="seccion-titulo">La forma cambia</h2>
