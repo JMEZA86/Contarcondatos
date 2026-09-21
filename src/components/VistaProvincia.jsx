@@ -2,10 +2,9 @@ import { useState } from "react";
 import MiniLinea from "./MiniLinea.jsx";
 import MapaProvincias from "./MapaProvincias.jsx";
 import datos from "../../data/processed/provincias.json";
+import { usePaleta } from "../paleta.jsx";
 
-const VERDE = "#1d9e75"; // varones
-const CORAL = "#d85a30"; // mujeres / provincia
-const GRIS = "#7a7266"; // país (comparación)
+const GRIS = "#7a7266"; // país (comparación) — gris, no cambia con el modo daltónico
 
 const coma1 = (v) => v.toFixed(1).replace(".", ",");
 const coma2 = (v) => v.toFixed(2).replace(".", ",");
@@ -20,6 +19,7 @@ const signo = (v, fmt) => (v >= 0 ? "+" : "−") + fmt(Math.abs(v));
 // el promedio nacional. (Versión sin mapa; el mapa GeoJSON se suma después.)
 // ==========================================================================
 export default function VistaProvincia() {
+  const { varones: VERDE, mujeres: CORAL } = usePaleta();
   // Arranca en Ciudad Autónoma de Buenos Aires (código 2).
   const [codigo, setCodigo] = useState(2);
   const prov = datos.provincias.find((p) => p.codigo === codigo);

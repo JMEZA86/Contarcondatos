@@ -41,12 +41,19 @@
   }
 }
 
-/* Botón flotante de pantalla completa (modo presentación). */
-.btn-pantalla {
+/* Botones flotantes (modo presentación + modo daltónico), apilados abajo a la derecha. */
+.botones-flotantes {
   position: fixed;
   right: 18px;
   bottom: 18px;
   z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.btn-pantalla,
+.btn-daltonico {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -62,16 +69,28 @@
   backdrop-filter: blur(6px);
   transition: border-color 150ms ease, background 150ms ease;
 }
-.btn-pantalla:hover {
+.btn-pantalla:hover,
+.btn-daltonico:hover {
   border-color: var(--coral);
   background: rgba(40, 30, 24, 0.92);
 }
 .btn-pantalla svg {
   color: var(--coral-claro);
 }
+/* El ícono del botón daltónico muestra los dos colores según el modo activo. */
+.btn-daltonico svg {
+  color: var(--coral-claro);
+}
+.btn-daltonico.activo {
+  border-color: #4f9fe0;
+}
+.btn-daltonico.activo svg {
+  color: #4f9fe0;
+}
 @media (max-width: 560px) {
   /* En pantallas chiquitas solo el ícono, para no tapar contenido. */
-  .btn-pantalla span {
+  .btn-pantalla span,
+  .btn-daltonico span {
     display: none;
   }
 }

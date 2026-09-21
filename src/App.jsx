@@ -4,6 +4,7 @@ import PresionQueViene from "./components/PresionQueViene.jsx";
 import VistaProvincia from "./components/VistaProvincia.jsx";
 import TuHistoria from "./components/TuHistoria.jsx";
 import BotonPantalla from "./components/BotonPantalla.jsx";
+import BotonDaltonico from "./components/BotonDaltonico.jsx";
 
 // Componente principal. La narrativa se lee de arriba a abajo:
 //   1) Hero: la pirámide interactiva (la forma cambia)
@@ -24,7 +25,10 @@ export default function App() {
       <VistaProvincia />
       <TuHistoria />
 
-      <BotonPantalla />
+      <div className="botones-flotantes">
+        <BotonDaltonico />
+        <BotonPantalla />
+      </div>
     </>
   );
 }

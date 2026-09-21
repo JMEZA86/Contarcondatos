@@ -1,7 +1,6 @@
 import MiniLinea from "./MiniLinea.jsx";
 import ratio from "../../data/processed/ratio_sosten.json";
-
-const CORAL = "#d85a30";
+import { usePaleta } from "../paleta.jsx";
 const coma = (v) => v.toFixed(1).replace(".", ",");
 
 // ==========================================================================
@@ -12,6 +11,7 @@ const coma = (v) => v.toFixed(1).replace(".", ",");
 // dejando claro que la proyección es demográfica (potencial), no del sistema.
 // ==========================================================================
 export default function PresionQueViene() {
+  const { mujeres: CORAL } = usePaleta();
   const serie = ratio.serie;
   const r = ratio.resumen;
   const ctx = ratio.contexto_anses;

@@ -2,9 +2,7 @@ import { useState } from "react";
 import piramide from "../../data/processed/piramide_nacional.json";
 import ratio from "../../data/processed/ratio_sosten.json";
 import provinciasData from "../../data/processed/provincias.json";
-
-const CORAL = "#d85a30";
-const VERDE = "#1d9e75";
+import { usePaleta } from "../paleta.jsx";
 
 const fmt = (n) => Math.round(n).toLocaleString("es-AR");
 const coma1 = (v) => v.toFixed(1).replace(".", ",");
@@ -18,6 +16,7 @@ const corto = (n) => (n.startsWith("Tierra del Fuego") ? "Tierra del Fuego" : n)
 // Todo se calcula con los datos que ya tiene el proyecto (INDEC).
 // ==========================================================================
 export default function TuHistoria() {
+  const { varones: VERDE, mujeres: CORAL } = usePaleta();
   const [edad, setEdad] = useState(30);
   const [codProv, setCodProv] = useState(6); // Buenos Aires por defecto
   const [sexo, setSexo] = useState("mujeres");

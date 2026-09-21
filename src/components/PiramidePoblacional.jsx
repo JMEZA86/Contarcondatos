@@ -4,6 +4,7 @@ import { scaleLinear, easeCubicOut } from "d3";
 // Importamos el JSON limpio que generó el ETL (data/processed).
 // Vite lo empaqueta automáticamente; queda disponible como un objeto JS.
 import datos from "../../data/processed/piramide_nacional.json";
+import { usePaleta } from "../paleta.jsx";
 
 // ==========================================================================
 // Constantes de layout del gráfico.
@@ -17,8 +18,7 @@ const ALTO_FILA = 24; // alto de cada banda de edad (quinquenio)
 const DURACION_ANIM = 550; // milisegundos que dura la transición entre años
 
 // Colores (los mismos de la paleta "Estratos").
-const VERDE = "#1d9e75"; // varones
-const CORAL = "#d85a30"; // mujeres
+// Los colores de varones/mujeres salen del contexto de paleta (modo daltónico).
 
 // ==========================================================================
 // Helper: agrupar las edades año-a-año (0,1,2,...) en quinquenios
@@ -54,6 +54,7 @@ function agruparEnQuinquenios(filas) {
 const fmt = (n) => Math.round(n).toLocaleString("es-AR");
 
 export default function PiramidePoblacional() {
+  const { varones: VERDE, mujeres: CORAL } = usePaleta();
   const anios = datos.meta.anios; // [2022, ..., 2040]
   const [anio, setAnio] = useState(anios[0]);
 

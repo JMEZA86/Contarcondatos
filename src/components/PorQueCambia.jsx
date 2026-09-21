@@ -1,9 +1,6 @@
 import MiniLinea from "./MiniLinea.jsx";
 import indicadores from "../../data/processed/indicadores_nacionales.json";
-
-// Colores de la paleta "Estratos".
-const VERDE = "#1d9e75"; // varones
-const CORAL = "#d85a30"; // mujeres / acento
+import { usePaleta } from "../paleta.jsx";
 
 // Formatea un número con coma decimal, estilo argentino (1.4 -> "1,4").
 const coma = (v) => v.toFixed(1).replace(".", ",");
@@ -16,6 +13,7 @@ const coma = (v) => v.toFixed(1).replace(".", ",");
 // Cada fuerza muestra una cifra grande + un mini-gráfico de su evolución.
 // ==========================================================================
 export default function PorQueCambia() {
+  const { varones: VERDE, mujeres: CORAL } = usePaleta();
   const fec = indicadores.fecundidad;
   const esp = indicadores.esperanza_vida;
 
