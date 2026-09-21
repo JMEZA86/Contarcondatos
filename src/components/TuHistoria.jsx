@@ -34,11 +34,13 @@ export default function TuHistoria() {
   const sost2022 = ratio.resumen.sosten_inicial; // 5,46
   const sost2040 = ratio.resumen.sosten_final; // 4,23
 
-  // Esperanza de vida al nacer en su provincia (proyección 2025, la más cercana
-  // al presente) vs. el promedio nacional, según el sexo elegido.
+  // Esperanza de vida al nacer proyectada para 2040 en su provincia vs. el
+  // promedio nacional, según el sexo elegido. Usamos 2040 (último año) para que
+  // sea CONSISTENTE con la vista por provincia (Capa 4), que también usa 2040.
   const prov = provinciasData.provincias.find((p) => p.codigo === codProv);
-  const espProv = prov.esperanza[0][sexo]; // 2025
-  const espNac = provinciasData.nacional.esperanza[0][sexo];
+  const ultimo = prov.esperanza.length - 1;
+  const espProv = prov.esperanza[ultimo][sexo];
+  const espNac = provinciasData.nacional.esperanza[ultimo][sexo];
   const difEsp = espProv - espNac;
 
   const sexoLabel = sexo === "mujeres" ? "las mujeres" : "los varones";
@@ -119,8 +121,9 @@ export default function TuHistoria() {
                 <strong>{fmt(cohorte)}</strong> {sexo} de {e} años en el país.{" "}
               </>
             ) : null}
-            En <strong>{corto(prov.nombre)}</strong>, la esperanza de vida al nacer
-            de {sexoLabel} es <strong>{coma1(espProv)} años</strong> —{" "}
+            En <strong>{corto(prov.nombre)}</strong>, la esperanza de vida al
+            nacer proyectada a 2040 para {sexoLabel} es{" "}
+            <strong>{coma1(espProv)} años</strong> —{" "}
             <strong style={{ color: difEsp >= 0 ? VERDE : CORAL }}>
               {signo(difEsp)}
             </strong>{" "}
