@@ -1,4 +1,5 @@
 import PiramidePoblacional from "./components/PiramidePoblacional.jsx";
+import Adivina from "./components/Adivina.jsx";
 import PorQueCambia from "./components/PorQueCambia.jsx";
 import PresionQueViene from "./components/PresionQueViene.jsx";
 import VistaProvincia from "./components/VistaProvincia.jsx";
@@ -20,6 +21,7 @@ export default function App() {
         </div>
       </main>
 
+      <Adivina />
       <PorQueCambia />
       <PresionQueViene />
       <VistaProvincia />
