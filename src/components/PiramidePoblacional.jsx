@@ -14,7 +14,7 @@ import { FUENTES, LinkFuente } from "../fuentes.jsx";
 // ==========================================================================
 const ANCHO = 920;
 const MARGEN = { top: 34, right: 12, bottom: 30, left: 12 };
-const HUECO_CENTRO = 58; // espacio central para las etiquetas de edad
+const HUECO_CENTRO = 66; // espacio central para las etiquetas de edad
 const ALTO_FILA = 24; // alto de cada banda de edad (quinquenio)
 const DURACION_ANIM = 550; // milisegundos que dura la transición entre años
 
@@ -53,6 +53,13 @@ function agruparEnQuinquenios(filas) {
 
 // Formatea un número al estilo argentino (46.135.579).
 const fmt = (n) => Math.round(n).toLocaleString("es-AR");
+
+// Eje X en millones, estilo argentino: 1.500.000 -> "1,5 M".
+const fmtEjeMill = (n) =>
+  (n / 1e6).toLocaleString("es-AR", {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }) + " M";
 
 export default function PiramidePoblacional() {
   const { varones: VERDE, mujeres: CORAL } = usePaleta();
@@ -231,6 +238,7 @@ export default function PiramidePoblacional() {
           INDEC — Estimaciones y proyecciones de población 2022–2040
         </LinkFuente>{" "}
         (base Censo 2022). Edades en quinquenios; “100+” incluye 100 años y más.
+        Eje horizontal en millones de personas.
       </p>
       </div>
       {/* ---------- Fin columna izquierda ---------- */}
@@ -288,11 +296,11 @@ export default function PiramidePoblacional() {
             <g key={`tick-${t}`}>
               <line x1={bordeIzq - x(t)} x2={bordeIzq - x(t)} y1={MARGEN.top} y2={alto - MARGEN.bottom} stroke="#ffffff" strokeOpacity="0.06" />
               <line x1={bordeDer + x(t)} x2={bordeDer + x(t)} y1={MARGEN.top} y2={alto - MARGEN.bottom} stroke="#ffffff" strokeOpacity="0.06" />
-              <text x={bordeIzq - x(t)} y={alto - MARGEN.bottom + 16} textAnchor="middle" fill="var(--texto-3)" fontFamily="var(--sans)" fontSize="11">
-                {Math.round(t / 1000)}k
+              <text x={bordeIzq - x(t)} y={alto - MARGEN.bottom + 18} textAnchor="middle" fill="var(--texto-2)" fontFamily="var(--sans)" fontSize="13" fontWeight="600">
+                {fmtEjeMill(t)}
               </text>
-              <text x={bordeDer + x(t)} y={alto - MARGEN.bottom + 16} textAnchor="middle" fill="var(--texto-3)" fontFamily="var(--sans)" fontSize="11">
-                {Math.round(t / 1000)}k
+              <text x={bordeDer + x(t)} y={alto - MARGEN.bottom + 18} textAnchor="middle" fill="var(--texto-2)" fontFamily="var(--sans)" fontSize="13" fontWeight="600">
+                {fmtEjeMill(t)}
               </text>
             </g>
           ))}
@@ -306,7 +314,7 @@ export default function PiramidePoblacional() {
               <g key={g.etiqueta}>
                 <rect x={bordeIzq - wVar} y={y} width={wVar} height={altoBarra} fill="url(#gente-varones)" rx="2" />
                 <rect x={bordeDer} y={y} width={wMuj} height={altoBarra} fill="url(#gente-mujeres)" rx="2" />
-                <text x={(bordeIzq + bordeDer) / 2} y={y + altoBarra / 2 + 4} textAnchor="middle" fill="var(--texto-2)" fontFamily="var(--sans)" fontSize="11">
+                <text x={(bordeIzq + bordeDer) / 2} y={y + altoBarra / 2 + 4} textAnchor="middle" fill="var(--texto-1)" fontFamily="var(--sans)" fontSize="14" fontWeight="600">
                   {g.etiqueta}
                 </text>
               </g>
