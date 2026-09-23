@@ -98,6 +98,10 @@ export default function PorQueCambia() {
               ]}
               dominioY={[70, 86]}
               marca={{ anio: 2023, label: "proyección →" }}
+              notas={{
+                2020: "Pandemia COVID-19",
+                2021: "Pandemia COVID-19 (mayor caída)",
+              }}
               formato={coma}
               unidad="años al nacer"
             />

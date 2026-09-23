@@ -29,6 +29,7 @@ export default function MiniLinea({
   dominioY,
   referencia,
   marca,
+  notas = {},
   formato = (v) => v,
   unidad = "",
 }) {
@@ -214,6 +215,7 @@ export default function MiniLinea({
             </div>
           ))}
           {unidad && <div className="mt-unidad">{unidad}</div>}
+          {notas[anioHover] && <div className="mt-nota">{notas[anioHover]}</div>}
         </div>
       )}
     </div>
