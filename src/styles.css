@@ -879,42 +879,8 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* ==========================================================================
-   Cierre: sección "Cómo se hizo" (metodología) + colofón (footer)
+   Colofón (footer)
    ========================================================================== */
-.metodo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 8px;
-}
-.metodo-item {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 20px 22px;
-  background: rgba(255, 255, 255, 0.02);
-}
-.metodo-item h3 {
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--coral-claro);
-  margin-bottom: 10px;
-}
-.metodo-item p {
-  font-family: var(--sans);
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: var(--texto-2);
-}
-@media (max-width: 760px) {
-  .metodo-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-}
-
 .colofon {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 40px 0 56px;

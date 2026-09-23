@@ -3,7 +3,7 @@ import PorQueCambia from "./components/PorQueCambia.jsx";
 import PresionQueViene from "./components/PresionQueViene.jsx";
 import VistaProvincia from "./components/VistaProvincia.jsx";
 import TuHistoria from "./components/TuHistoria.jsx";
-import Metodologia from "./components/Metodologia.jsx";
+import Colofon from "./components/Colofon.jsx";
 import BotonPantalla from "./components/BotonPantalla.jsx";
 import BotonDaltonico from "./components/BotonDaltonico.jsx";
 
@@ -25,7 +25,7 @@ export default function App() {
       <PresionQueViene />
       <VistaProvincia />
       <TuHistoria />
-      <Metodologia />
+      <Colofon />
 
       <div className="botones-flotantes">
         <BotonDaltonico />
