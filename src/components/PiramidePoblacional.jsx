@@ -109,6 +109,18 @@ export default function PiramidePoblacional() {
   useEffect(() => {
     const desde = displayRef.current; // valores actuales en pantalla
     const hasta = porAnio[anio]; // valores del año elegido
+
+    // Accesibilidad: si el usuario pide menos movimiento, saltamos la
+    // animación y mostramos directamente el año elegido.
+    const menosMovimiento =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (menosMovimiento) {
+      setDisplay(hasta);
+      return;
+    }
+
     let inicio = null;
     let raf;
 

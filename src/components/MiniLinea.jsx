@@ -66,9 +66,22 @@ export default function MiniLinea({
 
   const anioHover = hover ? anios[hover.i] : null;
 
+  // Descripción para lectores de pantalla: qué series, qué rango de años y los
+  // valores inicial y final de cada una.
+  const etiquetaAria =
+    `Gráfico de líneas, ${xMin} a ${xMax}${unidad ? `, en ${unidad}` : ""}. ` +
+    lineas
+      .map((s) => {
+        const p = s.puntos;
+        return `${s.nombre}: ${formato(p[0].valor)} en ${p[0].anio}, ${formato(
+          p[p.length - 1].valor
+        )} en ${p[p.length - 1].anio}`;
+      })
+      .join("; ") + ".";
+
   return (
     <div className="mini-wrap" ref={wrapRef}>
-      <svg viewBox={`0 0 ${ANCHO} ${ALTO}`} className="mini-linea" role="img">
+      <svg viewBox={`0 0 ${ANCHO} ${ALTO}`} className="mini-linea" role="img" aria-label={etiquetaAria}>
         {/* Línea de referencia punteada (ej: reemplazo 2,1) */}
         {referencia && (
           <g>

@@ -12,7 +12,7 @@
   --verde: #1d9e75; /* varones */
   --texto-1: #f5f0e8; /* texto principal */
   --texto-2: #b0a99c; /* texto secundario */
-  --texto-3: #7a7266; /* texto terciario */
+  --texto-3: #8b8274; /* texto terciario (contraste AA sobre el fondo) */
 
   /* Tipografías */
   --serif: "Fraunces", Georgia, serif;
@@ -26,6 +26,33 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* Accesibilidad: foco visible por teclado (no molesta al mouse gracias a
+   :focus-visible). Un solo estilo coherente para links, botones y controles. */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--coral-claro);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Accesibilidad: respetar a quien pide menos movimiento. Desactiva la
+   animación de la pirámide, transiciones y el scroll suave. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 /* Modo presentación: al scrollear, cada capa se "encaja" en la pantalla como
