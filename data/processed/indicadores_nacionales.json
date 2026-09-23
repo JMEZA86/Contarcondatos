@@ -1,35 +1,149 @@
 {
   "meta": {
     "titulo": "Indicadores demográficos — Total del país",
-    "fuente": "INDEC. Estimaciones y proyecciones de población 2022–2040, base Censo 2022 (cuadros 3, 5 y 6).",
+    "fuente": "INDEC. Estimaciones y proyecciones de población 2022-2040, base Censo 2022. Serie estimada 2001-2022 leída del Dosier estadístico 'La transformación de la población argentina' (gráficos 2 y 4); proyección 2025-2040 de los cuadros 5 y 6.",
     "anios": [
       2025,
       2030,
       2035,
       2040
     ],
-    "nota": "Los cuadros de INDEC solo publican estos 4 años."
+    "nota": "Fecundidad y esperanza de vida: valores estimados (observados) 2001-2022 y proyectados 2025-2040, todo del INDEC con base Censo 2022."
   },
   "fecundidad": {
     "unidad": "hijos por mujer",
     "nivel_reemplazo": 2.1,
-    "descripcion": "Tasa global de fecundidad (TGF): hijos promedio por mujer. Debajo de 2,1 la población no se renueva sola.",
+    "descripcion": "Tasa global de fecundidad (TGF): hijos promedio por mujer. Debajo de 2,1 la población no se renueva sola. Serie estimada 2001-2022 y proyección 2025-2040 (INDEC).",
     "serie": [
       {
+        "anio": 2001,
+        "valor": 2.5,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2002,
+        "valor": 2.51,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2003,
+        "valor": 2.46,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2004,
+        "valor": 2.49,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2005,
+        "valor": 2.4,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2006,
+        "valor": 2.34,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2007,
+        "valor": 2.3,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2008,
+        "valor": 2.4,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2009,
+        "valor": 2.36,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2010,
+        "valor": 2.36,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2011,
+        "valor": 2.31,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2012,
+        "valor": 2.29,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2013,
+        "valor": 2.29,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2014,
+        "valor": 2.35,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2015,
+        "valor": 2.25,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2016,
+        "valor": 2.13,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2017,
+        "valor": 2.06,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2018,
+        "valor": 1.99,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2019,
+        "valor": 1.8,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2020,
+        "valor": 1.59,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2021,
+        "valor": 1.49,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2022,
+        "valor": 1.43,
+        "origen": "estimado"
+      },
+      {
         "anio": 2025,
-        "valor": 1.27
+        "valor": 1.27,
+        "origen": "proyeccion"
       },
       {
         "anio": 2030,
-        "valor": 1.24
+        "valor": 1.24,
+        "origen": "proyeccion"
       },
       {
         "anio": 2035,
-        "valor": 1.32
+        "valor": 1.32,
+        "origen": "proyeccion"
       },
       {
         "anio": 2040,
-        "valor": 1.4
+        "valor": 1.4,
+        "origen": "proyeccion"
       }
     ]
   },
@@ -80,24 +194,160 @@
     "descripcion": "Cuántos años se espera que viva, en promedio, una persona nacida ese año.",
     "serie": [
       {
+        "anio": 2001,
+        "varones": 70.8,
+        "mujeres": 78.3,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2002,
+        "varones": 70.9,
+        "mujeres": 78.4,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2003,
+        "varones": 71.0,
+        "mujeres": 78.2,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2004,
+        "varones": 71.8,
+        "mujeres": 78.7,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2005,
+        "varones": 72.1,
+        "mujeres": 79.1,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2006,
+        "varones": 72.4,
+        "mujeres": 79.3,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2007,
+        "varones": 71.9,
+        "mujeres": 78.8,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2008,
+        "varones": 72.4,
+        "mujeres": 79.4,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2009,
+        "varones": 72.7,
+        "mujeres": 79.4,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2010,
+        "varones": 72.7,
+        "mujeres": 79.3,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2011,
+        "varones": 72.9,
+        "mujeres": 79.4,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2012,
+        "varones": 73.0,
+        "mujeres": 79.7,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2013,
+        "varones": 73.1,
+        "mujeres": 79.7,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2014,
+        "varones": 73.5,
+        "mujeres": 80.0,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2015,
+        "varones": 73.5,
+        "mujeres": 80.0,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2016,
+        "varones": 73.2,
+        "mujeres": 79.5,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2017,
+        "varones": 73.8,
+        "mujeres": 79.9,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2018,
+        "varones": 74.0,
+        "mujeres": 80.3,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2019,
+        "varones": 74.4,
+        "mujeres": 80.2,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2020,
+        "varones": 73.0,
+        "mujeres": 79.6,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2021,
+        "varones": 71.2,
+        "mujeres": 77.8,
+        "origen": "estimado"
+      },
+      {
+        "anio": 2022,
+        "varones": 73.2,
+        "mujeres": 79.2,
+        "origen": "estimado"
+      },
+      {
         "anio": 2025,
         "varones": 75.7,
-        "mujeres": 81.1
+        "mujeres": 81.1,
+        "origen": "proyeccion"
       },
       {
         "anio": 2030,
         "varones": 76.7,
-        "mujeres": 81.7
+        "mujeres": 81.7,
+        "origen": "proyeccion"
       },
       {
         "anio": 2035,
         "varones": 77.7,
-        "mujeres": 82.4
+        "mujeres": 82.4,
+        "origen": "proyeccion"
       },
       {
         "anio": 2040,
         "varones": 78.7,
-        "mujeres": 83.0
+        "mujeres": 83.0,
+        "origen": "proyeccion"
       }
     ]
   }

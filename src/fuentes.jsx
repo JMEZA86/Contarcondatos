@@ -12,6 +12,9 @@ export const FUENTES = {
   georef: "https://infra.datos.gob.ar/georef/provincias.geojson",
   // ONU — División de Población (World Population Prospects): nivel de reemplazo.
   onu: "https://population.un.org/wpp/",
+  // INDEC — Dosier "La transformación de la población argentina" (oct. 2025):
+  // serie histórica de fecundidad y esperanza de vida (gráficos 2 y 4).
+  dosier: "https://censo.gob.ar/index.php/proyecciones/",
 };
 
 // Componente de enlace de fuente reutilizable (abre en pestaña nueva, seguro).

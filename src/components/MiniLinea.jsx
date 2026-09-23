@@ -15,6 +15,8 @@ import { scaleLinear } from "d3";
 //   lineas     -> [{ nombre, color, puntos: [{anio, valor}] }]
 //   dominioY   -> [min, max] del eje vertical
 //   referencia -> { valor, label, color } (opcional): línea punteada horizontal
+//   marca      -> { anio, label } (opcional): línea vertical punteada que separa
+//                 lo estimado de lo proyectado (ej: "proyección →")
 //   formato    -> función para formatear los valores (ej: (v) => v.toFixed(1))
 //   unidad     -> texto de la unidad, se muestra al pie del tooltip
 // ==========================================================================
@@ -26,9 +28,13 @@ export default function MiniLinea({
   lineas,
   dominioY,
   referencia,
+  marca,
   formato = (v) => v,
   unidad = "",
 }) {
+  // Con muchos años (serie larga) no dibujamos un círculo por punto: satura.
+  // Dejamos solo los extremos y el punto bajo el mouse. La línea sigue entera.
+  const denso = lineas[0].puntos.length > 13;
   const anios = lineas[0].puntos.map((p) => p.anio);
   const xMin = Math.min(...anios);
   const xMax = Math.max(...anios);
@@ -87,6 +93,31 @@ export default function MiniLinea({
           </g>
         )}
 
+        {/* Marca vertical: separa lo estimado de lo proyectado */}
+        {marca && (
+          <g>
+            <line
+              x1={x(marca.anio)}
+              x2={x(marca.anio)}
+              y1={M.top - 2}
+              y2={ALTO - M.bottom}
+              stroke="var(--texto-3)"
+              strokeDasharray="3 3"
+              strokeWidth="1"
+            />
+            <text
+              x={x(marca.anio) + 4}
+              y={M.top + 8}
+              textAnchor="start"
+              fill="var(--texto-3)"
+              fontFamily="var(--sans)"
+              fontSize="9.5"
+            >
+              {marca.label}
+            </text>
+          </g>
+        )}
+
         {/* Guía vertical del año bajo el mouse */}
         {hover && (
           <line
@@ -105,12 +136,15 @@ export default function MiniLinea({
             <path d={pathDe(serie.puntos)} fill="none" stroke={serie.color} strokeWidth="2.5" />
             {serie.puntos.map((p, i) => (
               <g key={p.anio}>
-                <circle
-                  cx={x(p.anio)}
-                  cy={y(p.valor)}
-                  r={hover && hover.i === i ? 4.6 : 3.2}
-                  fill={serie.color}
-                />
+                {(!denso || i === 0 || i === serie.puntos.length - 1 ||
+                  (hover && hover.i === i)) && (
+                  <circle
+                    cx={x(p.anio)}
+                    cy={y(p.valor)}
+                    r={hover && hover.i === i ? 4.6 : 3.2}
+                    fill={serie.color}
+                  />
+                )}
                 {/* Etiqueta de valor solo en los extremos, para no saturar.
                     Una serie puede pedir no etiquetar (etiquetar:false), útil
                     cuando es una línea de comparación que se pisaría con otra. */}

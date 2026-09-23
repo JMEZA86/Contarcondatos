@@ -18,12 +18,13 @@ export default function PorQueCambia() {
   const fec = indicadores.fecundidad;
   const esp = indicadores.esperanza_vida;
 
-  // Valores puntuales para las cifras grandes (año final: 2040).
-  const fec2040 = fec.serie[fec.serie.length - 1].valor; // 1.4
-  const esp2040 = esp.serie[esp.serie.length - 1]; // {varones, mujeres}
-  const esp2025 = esp.serie[0];
-  const gananciaMuj = (esp2040.mujeres - esp2025.mujeres).toFixed(1).replace(".", ",");
-  const gananciaVar = (esp2040.varones - esp2025.varones).toFixed(1).replace(".", ",");
+  // Extremos de cada serie para las cifras grandes y el relato del arco.
+  const fec2001 = fec.serie[0].valor; // 2.5 (primer año estimado)
+  const fec2040 = fec.serie[fec.serie.length - 1].valor; // 1.4 (proyección)
+  const esp2001 = esp.serie[0]; // {varones, mujeres} en 2001
+  const esp2040 = esp.serie[esp.serie.length - 1]; // {varones, mujeres} en 2040
+  const gananciaMuj = (esp2040.mujeres - esp2001.mujeres).toFixed(1).replace(".", ",");
+  const gananciaVar = (esp2040.varones - esp2001.varones).toFixed(1).replace(".", ",");
 
   return (
     <section className="capa">
@@ -45,10 +46,10 @@ export default function PorQueCambia() {
               {coma(fec2040)} <span className="u">hijos por mujer</span>
             </p>
             <p className="fuerza-desc">
-              Es lo proyectado para 2040. Pero hacen falta{" "}
-              <strong>2,1</strong> para que una población se renueve sola: hace
-              décadas que Argentina está por debajo. Por eso la{" "}
-              <strong>base</strong> de la pirámide se angosta.
+              En 2001 eran <strong>{coma(fec2001)}</strong>. Hacen falta{" "}
+              <strong>2,1</strong> para que una población se renueve sola:
+              Argentina cruzó ese piso a mediados de los 2010 y siguió cayendo.
+              Por eso la <strong>base</strong> de la pirámide se angosta.
             </p>
             <MiniLinea
               lineas={[
@@ -58,8 +59,9 @@ export default function PorQueCambia() {
                   puntos: fec.serie.map((d) => ({ anio: d.anio, valor: d.valor })),
                 },
               ]}
-              dominioY={[0, 2.4]}
+              dominioY={[0, 2.8]}
               referencia={{ valor: fec.nivel_reemplazo, label: "Reemplazo (2,1)" }}
+              marca={{ anio: 2023, label: "proyección →" }}
               formato={coma}
               unidad="hijos por mujer"
             />
@@ -75,11 +77,11 @@ export default function PorQueCambia() {
               <span className="u">/ {coma(esp2040.varones)} años</span>
             </p>
             <p className="fuerza-desc">
-              Esperanza de vida al nacer en 2040 (mujeres / varones). Sigue
-              subiendo — <strong>+{gananciaMuj}</strong> y{" "}
-              <strong>+{gananciaVar}</strong> años desde 2025. Más gente llega a
-              edades altas, y la <strong>cúpula</strong> de la pirámide se
-              ensancha.
+              Esperanza de vida al nacer, mujeres / varones. Desde 2001 se
+              ganaron <strong>+{gananciaMuj}</strong> y{" "}
+              <strong>+{gananciaVar}</strong> años (el pozo de 2020–2021 es la
+              pandemia). Más gente llega a edades altas, y la{" "}
+              <strong>cúpula</strong> de la pirámide se ensancha.
             </p>
             <MiniLinea
               lineas={[
@@ -95,6 +97,7 @@ export default function PorQueCambia() {
                 },
               ]}
               dominioY={[70, 86]}
+              marca={{ anio: 2023, label: "proyección →" }}
               formato={coma}
               unidad="años al nacer"
             />
@@ -102,13 +105,17 @@ export default function PorQueCambia() {
         </div>
 
         <p className="fuente-mini">
-          Fuente:{" "}
-          <LinkFuente href={FUENTES.indec}>
-            INDEC — Estimaciones y proyecciones de población 2022–2040
+          Fuente: INDEC (base Censo 2022). Serie estimada 2001–2022 leída de los
+          gráficos del{" "}
+          <LinkFuente href={FUENTES.dosier}>
+            Dosier “La transformación de la población argentina” (2025)
           </LinkFuente>{" "}
-          (cuadros de fecundidad y esperanza de vida). Los cuadros publican solo
-          los años 2025, 2030, 2035 y 2040. El nivel de reemplazo (2,1 hijos por
-          mujer) es el estándar demográfico para poblaciones de baja mortalidad
+          y proyección 2025–2040 de las{" "}
+          <LinkFuente href={FUENTES.indec}>
+            Estimaciones y proyecciones de población 2022–2040
+          </LinkFuente>. La línea vertical separa lo estimado de lo proyectado.
+          El nivel de reemplazo (2,1 hijos por mujer) es el estándar demográfico
+          para poblaciones de baja mortalidad
           (<LinkFuente href={FUENTES.onu}>División de Población, ONU</LinkFuente>).
         </p>
       </div>
