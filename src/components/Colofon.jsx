@@ -1,9 +1,10 @@
 import { FUENTES, LinkFuente } from "../fuentes.jsx";
 
 // ==========================================================================
-// Colofón (footer): cierra el sitio con el título, todas las fuentes en un
-// solo lugar y la firma con seudónimo. La descripción metodológica completa
-// va en el Formulario de Inscripción, no en la pieza.
+// Colofón (footer): cierra el sitio con el título y todas las fuentes en un
+// solo lugar. Sin firma: la obra se presenta de forma anónima (evaluación a
+// ciegas) y el seudónimo va solo en el Formulario de Inscripción, igual que la
+// descripción metodológica.
 // ==========================================================================
 export default function Colofon() {
   return (
@@ -28,8 +29,7 @@ export default function Colofon() {
           <LinkFuente href={FUENTES.onu}>ONU</LinkFuente>
         </p>
         <p className="colofon-firma">
-          Exploración interactiva · <strong>Curuzú</strong> · 2026 · Datos
-          oficiales y abiertos del INDEC.
+          Exploración interactiva · 2026 · Datos oficiales y abiertos del INDEC.
         </p>
       </div>
     </footer>
