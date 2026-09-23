@@ -877,3 +877,69 @@ input[type="range"]::-moz-range-thumb {
   margin-right: 6px;
   vertical-align: baseline;
 }
+
+/* ==========================================================================
+   Cierre: sección "Cómo se hizo" (metodología) + colofón (footer)
+   ========================================================================== */
+.metodo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 8px;
+}
+.metodo-item {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px 22px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.metodo-item h3 {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--coral-claro);
+  margin-bottom: 10px;
+}
+.metodo-item p {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--texto-2);
+}
+@media (max-width: 760px) {
+  .metodo-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.colofon {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 40px 0 56px;
+}
+.colofon-titulo {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--texto-1);
+}
+.colofon-bajada {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--texto-2);
+  margin: 4px 0 16px;
+}
+.colofon-fuentes {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--texto-3);
+  line-height: 1.8;
+}
+.colofon-firma {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: var(--texto-3);
+  margin-top: 12px;
+}
