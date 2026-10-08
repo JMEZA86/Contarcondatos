@@ -112,8 +112,10 @@ export default function VistaProvincia() {
             </p>
             <p className="fuerza-desc">
               Proyectada para 2040. Es <strong>{signo(difFec, coma2)}</strong>{" "}
-              respecto del promedio nacional ({coma2(nacFec)}) — y sigue lejos del
-              2,1 necesario para renovar la población.
+              respecto del promedio nacional ({coma2(nacFec)}). La leve suba hacia
+              2040 es el <strong>repunte</strong> que proyecta el INDEC (maternidad
+              postergada), pero sigue muy por debajo del 2,1 necesario para
+              renovar la población.
             </p>
             <MiniLinea
               lineas={[
