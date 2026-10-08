@@ -8,9 +8,11 @@ import datos from "../../data/processed/provincias.json";
 const H = 640;
 
 // ==========================================================================
-// MapaProvincias: mapa de la Argentina coloreado por esperanza de vida
-// (mujeres, 2040). Se puede clickear una provincia para seleccionarla, y la
-// provincia elegida se resalta con borde claro. Un tooltip muestra el nombre.
+// MapaProvincias: mapa de la Argentina coloreado por FECUNDIDAD (hijos por
+// mujer, 2040). Se elige la fecundidad —y no la esperanza de vida— porque es
+// un único valor por provincia (la esperanza son dos, mujeres y varones, y
+// mapear solo uno sería arbitrario). Es, además, el mapa que el propio INDEC
+// usa por jurisdicción. Se puede clickear una provincia para seleccionarla.
 //
 // Props:
 //   seleccion -> código INDEC de la provincia elegida
@@ -20,18 +22,18 @@ export default function MapaProvincias({ seleccion, onSelect }) {
   const wrapRef = useRef(null);
   const [hover, setHover] = useState(null); // { cod, nombre, x, y }
 
-  // Valor para colorear cada provincia: esperanza de vida de mujeres en 2040.
+  // Valor para colorear cada provincia: fecundidad (TGF) en 2040.
   const valorPorCod = useMemo(() => {
     const m = {};
     for (const p of datos.provincias) {
-      m[p.codigo] = p.esperanza[p.esperanza.length - 1].mujeres;
+      m[p.codigo] = p.fecundidad[p.fecundidad.length - 1].valor;
     }
     return m;
   }, []);
 
-  // Colores extremos de la escala (oscuro = menos años, claro = más años).
-  const COLOR_MIN = "#5c2e1a";
-  const COLOR_MAX = "#F0997B";
+  // Colores extremos de la escala (claro = menos hijos, coral intenso = más).
+  const COLOR_MIN = "#f2c4ad";
+  const COLOR_MAX = "#9e3418";
 
   // Escala de color y valores mínimo/máximo (para la barra de referencia).
   const { color, minV, maxV } = useMemo(() => {
@@ -45,7 +47,7 @@ export default function MapaProvincias({ seleccion, onSelect }) {
     };
   }, [valorPorCod]);
 
-  const coma1 = (v) => v.toFixed(1).replace(".", ",");
+  const coma2 = (v) => v.toFixed(2).replace(".", ",");
 
   // Proyección y generador de paths. Dos pasos para que el ancho quede ajustado
   // a la forma real del país (y no sobre espacio a los costados).
@@ -74,7 +76,7 @@ export default function MapaProvincias({ seleccion, onSelect }) {
 
   return (
     <div className="mapa-wrap" ref={wrapRef}>
-      <svg viewBox={`0 0 ${W} ${H}`} className="mapa-svg" role="img" aria-label="Mapa de provincias">
+      <svg viewBox={`0 0 ${W} ${H}`} className="mapa-svg" role="img" aria-label="Mapa de provincias coloreado por fecundidad en 2040">
         {geojsonData.features.map((f) => {
           const cod = f.properties.cod;
           const activa = cod === seleccion;
@@ -97,15 +99,15 @@ export default function MapaProvincias({ seleccion, onSelect }) {
 
       {/* Leyenda de color: barra con degradé + dirección */}
       <div className="mapa-leyenda">
-        <div className="ley-cap">Esperanza de vida · mujeres · 2040</div>
+        <div className="ley-cap">Fecundidad · 2040 · hijos por mujer</div>
         <div
           className="ley-barra"
           style={{ background: `linear-gradient(90deg, ${COLOR_MIN}, ${COLOR_MAX})` }}
         />
         <div className="ley-ejes">
-          <span>{coma1(minV)} años</span>
-          <span className="ley-flecha">menos → más años</span>
-          <span>{coma1(maxV)} años</span>
+          <span>{coma2(minV)}</span>
+          <span className="ley-flecha">menos → más hijos</span>
+          <span>{coma2(maxV)}</span>
         </div>
       </div>
 
@@ -113,7 +115,7 @@ export default function MapaProvincias({ seleccion, onSelect }) {
         <div className="mapa-tooltip" style={{ left: hover.x, top: hover.y }}>
           <strong>{nombreCorto(hover.nombre)}</strong>
           <br />
-          {valorPorCod[hover.cod].toFixed(1).replace(".", ",")} años
+          {coma2(valorPorCod[hover.cod])} hijos por mujer
         </div>
       )}
     </div>
