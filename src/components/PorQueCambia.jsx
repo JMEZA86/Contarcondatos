@@ -48,8 +48,8 @@ export default function PorQueCambia() {
             <p className="fuerza-desc">
               En 2001 eran <strong>{coma(fec2001)}</strong>. Hacen falta{" "}
               <strong>2,1</strong> para que una población se renueve sola:
-              Argentina cruzó ese piso a mediados de los 2010 y siguió cayendo.
-              Por eso la <strong>base</strong> de la pirámide se angosta.
+              Argentina cruzó ese piso hacia <strong>2017</strong> y siguió
+              cayendo. Por eso la <strong>base</strong> de la pirámide se angosta.
             </p>
             <MiniLinea
               lineas={[
