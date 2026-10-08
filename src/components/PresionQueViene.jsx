@@ -34,21 +34,25 @@ export default function PresionQueViene() {
             <p className="sosten-cifra">
               {coma(r.sosten_final)}{" "}
               <span className="u">
-                personas en edad activa por cada persona de 65+
+                en edad de trabajar por cada persona de 65+ (sostén potencial)
               </span>
             </p>
             <p className="sosten-sub">
-              Es lo proyectado para <strong>{r.anio_final}</strong>. Eran{" "}
-              <strong>{coma(r.sosten_inicial)}</strong> en {r.anio_inicial}: una
-              caída del <strong>{coma(Math.abs(r.caida_pct))}%</strong> en menos
-              de 20 años.
+              Es el <strong>sostén demográfico</strong> proyectado para{" "}
+              <strong>{r.anio_final}</strong>: toda la gente en edad de trabajar
+              por cada persona mayor. Eran <strong>{coma(r.sosten_inicial)}</strong>{" "}
+              en {r.anio_inicial} — una caída del{" "}
+              <strong>{coma(Math.abs(r.caida_pct))}%</strong>.
             </p>
 
             <div className="ancla-hoy">
-              <p className="ancla-titulo">En el sistema real, hoy</p>
+              <p className="ancla-titulo">Potencial no es lo mismo que real</p>
               <p className="ancla-texto">
-                Hay ~<strong>{coma(ctx.aportantes_por_beneficiario_2023)}</strong>{" "}
-                aportantes por cada beneficiario, y el sistema cubre solo el{" "}
+                Ese <strong>{coma(r.sosten_final)}</strong> cuenta a{" "}
+                <em>todos</em> los que están en edad de trabajar. Pero no todos
+                aportan: en el sistema previsional hay solo{" "}
+                <strong>~{coma(ctx.aportantes_por_beneficiario_2023)}</strong>{" "}
+                aportantes por cada beneficiario, y cubre el{" "}
                 <strong>{coma(ctx.cobertura_beneficios_pct)}%</strong> de los
                 beneficios que paga.
               </p>
