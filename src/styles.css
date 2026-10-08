@@ -452,6 +452,15 @@ input[type="range"]::-moz-range-thumb {
   border-color: var(--coral);
 }
 
+/* Desplegable nativo de cualquier <select>: fondo oscuro y texto claro en
+   todos los navegadores. Sin esto, en Windows la lista se abre con fondo
+   blanco y las opciones (texto claro) quedan casi invisibles. */
+select option,
+select optgroup {
+  background-color: #1e1814;
+  color: var(--texto-1);
+}
+
 /* Toggle Mujer / Varón */
 .vos-sexo {
   display: inline-flex;
