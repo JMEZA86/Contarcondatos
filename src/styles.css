@@ -202,11 +202,11 @@ body {
 
 /* Fuente en chico, al pie de la columna izquierda. */
 .fuente-mini {
-  font-size: 11.5px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.65;
   color: var(--texto-3);
-  margin-top: 18px;
-  max-width: 46ch;
+  margin-top: 20px;
+  max-width: 80ch;
 }
 
 /* Enlaces a las fuentes de datos dentro de las notas al pie. */
