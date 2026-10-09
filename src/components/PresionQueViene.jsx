@@ -24,8 +24,7 @@ export default function PresionQueViene() {
         <h2 className="capa-titulo">Cada vez menos sostén</h2>
         <p className="capa-intro">
           Si se nace menos y se vive más, queda menos gente en edad de trabajar
-          por cada persona mayor. No es una predicción incierta: es aritmética de
-          la población que ya nació.
+          por cada persona mayor.
         </p>
 
         <div className="sosten-layout">
