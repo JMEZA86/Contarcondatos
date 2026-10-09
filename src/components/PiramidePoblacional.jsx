@@ -200,9 +200,8 @@ export default function PiramidePoblacional() {
         Nacer menos, vivir más: la ecuación que cambia el país.
       </p>
 
-      <h2 className="seccion-titulo">La forma cambia</h2>
       <p className="seccion-ayuda">
-        Movés el año y ves cómo cambia la forma de la población, 2022–2040.
+        Movés el año y la forma cambia, 2022–2040.
       </p>
 
       {/* --- Control del año --- */}
