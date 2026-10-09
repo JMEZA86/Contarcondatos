@@ -33,7 +33,7 @@ export default function PresionQueViene() {
             <p className="sosten-cifra">
               {coma(r.sosten_final)}{" "}
               <span className="u">
-                en edad de trabajar por cada persona de 65+ (sostén potencial)
+                en edad de trabajar por cada persona de 65+
               </span>
             </p>
             <p className="sosten-sub">

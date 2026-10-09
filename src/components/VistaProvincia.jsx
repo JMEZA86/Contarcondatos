@@ -65,40 +65,7 @@ export default function VistaProvincia() {
 
           {/* ---------- Tarjetas (derecha, apiladas) ---------- */}
           <div className="prov-cards">
-          {/* ---------- Esperanza de vida ---------- */}
-          <article className="fuerza">
-            <p className="fuerza-eyebrow" style={{ color: CORAL }}>
-              Esperanza de vida
-            </p>
-            <p className="fuerza-cifra">
-              {coma1(provEsp.mujeres)}{" "}
-              <span className="u">/ {coma1(provEsp.varones)} años</span>
-            </p>
-            <p className="fuerza-desc">
-              Mujeres / varones en 2040. Las mujeres de {corto(prov.nombre)} viven{" "}
-              <strong>{signo(difEspMuj, coma1)}</strong> años respecto del promedio
-              nacional ({coma1(nacEsp.mujeres)}).
-            </p>
-            <MiniLinea
-              lineas={[
-                {
-                  nombre: "Mujeres",
-                  color: CORAL,
-                  puntos: prov.esperanza.map((d) => ({ anio: d.anio, valor: d.mujeres })),
-                },
-                {
-                  nombre: "Varones",
-                  color: VERDE,
-                  puntos: prov.esperanza.map((d) => ({ anio: d.anio, valor: d.varones })),
-                },
-              ]}
-              dominioY={[70, 86]}
-              formato={coma1}
-              unidad="años al nacer"
-            />
-          </article>
-
-          {/* ---------- Fecundidad ---------- */}
+          {/* ---------- Fecundidad (primero: coincide con el mapa) ---------- */}
           <article className="fuerza">
             <p className="fuerza-eyebrow" style={{ color: CORAL }}>
               Fecundidad
@@ -131,6 +98,39 @@ export default function VistaProvincia() {
               referencia={{ valor: 2.1, label: "Reemplazo (2,1)" }}
               formato={coma2}
               unidad="hijos por mujer"
+            />
+          </article>
+
+          {/* ---------- Esperanza de vida ---------- */}
+          <article className="fuerza">
+            <p className="fuerza-eyebrow" style={{ color: CORAL }}>
+              Esperanza de vida
+            </p>
+            <p className="fuerza-cifra">
+              {coma1(provEsp.mujeres)}{" "}
+              <span className="u">/ {coma1(provEsp.varones)} años</span>
+            </p>
+            <p className="fuerza-desc">
+              Mujeres / varones en 2040. Las mujeres de {corto(prov.nombre)} viven{" "}
+              <strong>{signo(difEspMuj, coma1)}</strong> años respecto del promedio
+              nacional ({coma1(nacEsp.mujeres)}).
+            </p>
+            <MiniLinea
+              lineas={[
+                {
+                  nombre: "Mujeres",
+                  color: CORAL,
+                  puntos: prov.esperanza.map((d) => ({ anio: d.anio, valor: d.mujeres })),
+                },
+                {
+                  nombre: "Varones",
+                  color: VERDE,
+                  puntos: prov.esperanza.map((d) => ({ anio: d.anio, valor: d.varones })),
+                },
+              ]}
+              dominioY={[70, 86]}
+              formato={coma1}
+              unidad="años al nacer"
             />
           </article>
           </div>

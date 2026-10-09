@@ -46,10 +46,9 @@ export default function PorQueCambia() {
               {coma(fec2040)} <span className="u">hijos por mujer</span>
             </p>
             <p className="fuerza-desc">
-              En 2001 eran <strong>{coma(fec2001)}</strong>. Hacen falta{" "}
-              <strong>2,1</strong> para que una población se renueve sola:
-              Argentina cruzó ese piso hacia <strong>2017</strong> y siguió
-              cayendo. Por eso la <strong>base</strong> de la pirámide se angosta.
+              En 2001 eran <strong>{coma(fec2001)}</strong>. Cruzó el piso de{" "}
+              <strong>2,1</strong> —el mínimo para renovar la población— hacia{" "}
+              <strong>2017</strong>. Por eso la <strong>base</strong> se angosta.
             </p>
             <MiniLinea
               lineas={[
@@ -77,11 +76,10 @@ export default function PorQueCambia() {
               <span className="u">/ {coma(esp2040.varones)} años</span>
             </p>
             <p className="fuerza-desc">
-              Esperanza de vida al nacer, mujeres / varones. Desde 2001 se
-              ganaron <strong>+{gananciaMuj}</strong> y{" "}
-              <strong>+{gananciaVar}</strong> años (el pozo de 2020–2021 es la
-              pandemia). Más gente llega a edades altas, y la{" "}
-              <strong>cúpula</strong> de la pirámide se ensancha.
+              Mujeres / varones. Desde 2001 se ganaron{" "}
+              <strong>+{gananciaMuj}</strong> y <strong>+{gananciaVar}</strong>{" "}
+              años (el pozo de 2020–2021 es la pandemia). Más gente llega a
+              edades altas: la <strong>cúpula</strong> se ensancha.
             </p>
             <MiniLinea
               lineas={[

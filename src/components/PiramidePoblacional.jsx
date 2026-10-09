@@ -164,7 +164,7 @@ export default function PiramidePoblacional() {
   const total65 = grupos
     .filter((g) => g.inicio >= 65)
     .reduce((s, g) => s + g.varones + g.mujeres, 0);
-  const pct65 = ((total65 / totalAnio) * 100).toFixed(1);
+  const pct65 = ((total65 / totalAnio) * 100).toFixed(1).replace(".", ",");
   const esProyeccion = anio > anios[0];
 
   // ------------------------------------------------------------------------
@@ -185,7 +185,7 @@ export default function PiramidePoblacional() {
   // Datos de la franja bajo el mouse (si hay), para el contenido del tooltip.
   const gHover = hover ? grupos[hover.i] : null;
   const totalHover = gHover ? gHover.varones + gHover.mujeres : 0;
-  const pctHover = gHover ? ((totalHover / totalAnio) * 100).toFixed(1) : 0;
+  const pctHover = gHover ? ((totalHover / totalAnio) * 100).toFixed(1).replace(".", ",") : 0;
 
   return (
     // Layout de dos columnas en desktop: controles a la izquierda, gráfico a la
