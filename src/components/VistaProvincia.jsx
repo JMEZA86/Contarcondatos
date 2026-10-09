@@ -40,10 +40,6 @@ export default function VistaProvincia() {
       <div className="contenedor">
         <p className="kicker">Cómo varía según la región</p>
         <h2 className="capa-titulo">No todas las provincias son iguales</h2>
-        <p className="capa-intro">
-          El promedio nacional esconde diferencias grandes. Elegí una provincia y
-          compará su esperanza de vida y su fecundidad con el país.
-        </p>
 
         {/* Selector de provincia */}
         <div className="selector-prov">
