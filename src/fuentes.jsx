@@ -10,8 +10,6 @@ export const FUENTES = {
   opc: "https://opc.gob.ar/empleo-y-prevision-social/estado-de-situacion-del-sistema-integrado-previsional-argentino-sipa/",
   // Georef (Ministerio del Interior) — GeoJSON de provincias para el mapa.
   georef: "https://infra.datos.gob.ar/georef/provincias.geojson",
-  // ONU — División de Población (World Population Prospects): nivel de reemplazo.
-  onu: "https://population.un.org/wpp/",
   // INDEC — Dosier "La transformación de la población argentina" (oct. 2025):
   // serie histórica de fecundidad y esperanza de vida (gráficos 2 y 4).
   dosier: "https://censo.gob.ar/index.php/proyecciones/",

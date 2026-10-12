@@ -110,8 +110,9 @@ export default function PorQueCambia() {
           Fuente: <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente> — serie
           estimada 2001–2022 (
           <LinkFuente href={FUENTES.dosier}>Dosier 2025</LinkFuente>) y proyección
-          2025–2040. La línea vertical separa lo estimado de lo proyectado;
-          reemplazo 2,1 (<LinkFuente href={FUENTES.onu}>ONU</LinkFuente>).
+          2025–2040. La línea vertical separa lo estimado de lo proyectado. El
+          nivel de reemplazo de 2,1 —el mínimo para sustituir a la generación de
+          los padres— también lo define el INDEC en el Dosier 2025.
         </p>
       </div>
     </section>

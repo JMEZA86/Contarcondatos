@@ -47,10 +47,6 @@ export default function Colofon() {
               <LinkFuente href={FUENTES.georef}>Georef (Ministerio del Interior)</LinkFuente>
               : cartografía de las provincias.
             </li>
-            <li>
-              <LinkFuente href={FUENTES.onu}>ONU — División de Población (WPP)</LinkFuente>
-              : nivel de reemplazo (2,1 hijos por mujer).
-            </li>
           </ul>
         </div>
         <p className="colofon-firma">
