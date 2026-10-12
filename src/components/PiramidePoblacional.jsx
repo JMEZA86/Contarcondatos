@@ -244,12 +244,8 @@ export default function PiramidePoblacional() {
       </p>
 
       <p className="fuente-mini">
-        Fuente:{" "}
-        <LinkFuente href={FUENTES.indec}>
-          INDEC — Estimaciones y proyecciones de población 2022–2040
-        </LinkFuente>{" "}
-        (base Censo 2022). Edades en quinquenios; “100+” incluye 100 años y más.
-        Eje horizontal en millones de personas.
+        Fuente: <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente> (proyecciones
+        2022–2040). Edades en quinquenios; eje horizontal en millones.
       </p>
       </div>
       {/* ---------- Fin columna izquierda ---------- */}

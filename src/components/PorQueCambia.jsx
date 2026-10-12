@@ -107,18 +107,9 @@ export default function PorQueCambia() {
         </div>
 
         <p className="fuente-mini">
-          Fuente: INDEC (base Censo 2022). Serie estimada 2001–2022 leída de los
-          gráficos del{" "}
-          <LinkFuente href={FUENTES.dosier}>
-            Dosier “La transformación de la población argentina” (2025)
-          </LinkFuente>{" "}
-          y proyección 2025–2040 de las{" "}
-          <LinkFuente href={FUENTES.indec}>
-            Estimaciones y proyecciones de población 2022–2040
-          </LinkFuente>. La línea vertical separa lo estimado de lo proyectado.
-          El nivel de reemplazo (2,1 hijos por mujer) es el estándar demográfico
-          para poblaciones de baja mortalidad
-          (<LinkFuente href={FUENTES.onu}>División de Población, ONU</LinkFuente>).
+          Fuente: <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente> — serie
+          estimada 2001–2022 (Dosier 2025) y proyección 2025–2040. La línea
+          vertical separa lo estimado de lo proyectado; reemplazo 2,1 (ONU).
         </p>
       </div>
     </section>

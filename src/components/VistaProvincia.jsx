@@ -137,20 +137,9 @@ export default function VistaProvincia() {
         </div>
 
         <p className="fuente-mini">
-          Fuente:{" "}
-          <LinkFuente href={FUENTES.indec}>
-            INDEC — Proyecciones por jurisdicción 2022–2040
-          </LinkFuente>{" "}
-          (base Censo 2022; años 2025, 2030, 2035 y 2040). A diferencia del total
-          del país, el INDEC publica los indicadores por provincia solo como
-          proyección: por eso esta sección no incluye serie histórica hacia
-          atrás. Mapa:{" "}
-          <LinkFuente href={FUENTES.georef}>
-            Georef (Ministerio del Interior)
-          </LinkFuente>
-          . El nivel de reemplazo (2,1) es el estándar demográfico para
-          poblaciones de baja mortalidad (
-          <LinkFuente href={FUENTES.onu}>División de Población, ONU</LinkFuente>).
+          Fuente: <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente> — proyecciones
+          por jurisdicción 2022–2040 · mapa Georef. Por provincia el INDEC solo
+          publica proyección: por eso no hay serie histórica.
         </p>
       </div>
     </section>

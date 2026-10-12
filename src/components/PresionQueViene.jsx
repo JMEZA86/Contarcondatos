@@ -79,18 +79,10 @@ export default function PresionQueViene() {
         </div>
 
         <p className="fuente-mini">
-          Gráfico: elaboración propia sobre{" "}
-          <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente> (proyecciones
-          2022–2040). Es el sostén demográfico <em>potencial</em> — toda la
-          población en edad de trabajar, no solo quienes aportan. El ratio del
-          sistema previsional real (
-          <LinkFuente href={FUENTES.anses}>ANSES, Anuario Cap. 4</LinkFuente>) se
-          mantuvo estable entre 2009 y 2023. La cobertura del sistema (51,6%)
-          surge de la{" "}
-          <LinkFuente href={FUENTES.opc}>
-            OPC — Estado de situación del SIPA
-          </LinkFuente>
-          .
+          Fuente: <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente> (proyecciones
+          2022–2040), ANSES y OPC. El 4,2 es el sostén demográfico{" "}
+          <em>potencial</em>: toda la población en edad de trabajar, no solo
+          quienes aportan.
         </p>
       </div>
     </section>

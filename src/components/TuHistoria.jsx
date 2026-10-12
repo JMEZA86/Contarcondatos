@@ -133,9 +133,9 @@ export default function TuHistoria() {
 
         <p className="fuente-mini">
           Cálculos propios sobre{" "}
-          <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente> (proyecciones
-          2022–2040, base Censo 2022). La esperanza de vida es al nacer, un
-          indicador de la provincia — no una predicción individual.
+          <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente>. La esperanza de
+          vida es al nacer, un indicador de la provincia — no una predicción
+          individual.
         </p>
       </div>
     </section>
