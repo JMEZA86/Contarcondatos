@@ -1,17 +1,8 @@
 import MiniLinea from "./MiniLinea.jsx";
 import ratio from "../../data/processed/ratio_sosten.json";
-import piramide from "../../data/processed/piramide_nacional.json";
 import { usePaleta } from "../paleta.jsx";
 import { FUENTES, LinkFuente } from "../fuentes.jsx";
 const coma = (v) => v.toFixed(1).replace(".", ",");
-
-// "1 de cada N": cuántas personas hay por cada una de 65+ en ese año.
-const unoDeCada = (anio) => {
-  const filas = piramide.piramide[anio];
-  const tot = filas.reduce((s, f) => s + f.varones + f.mujeres, 0);
-  const m65 = filas.filter((f) => f.edad >= 65).reduce((s, f) => s + f.varones + f.mujeres, 0);
-  return Math.round(tot / m65);
-};
 
 // ==========================================================================
 // Capa 3 — "Qué consecuencia tiene".
@@ -25,8 +16,6 @@ export default function PresionQueViene() {
   const serie = ratio.serie;
   const r = ratio.resumen;
   const ctx = ratio.contexto_anses;
-  const hoy65 = unoDeCada("2022"); // 8
-  const fut65 = unoDeCada("2040"); // 6
 
   return (
     <section className="capa">
@@ -87,19 +76,6 @@ export default function PresionQueViene() {
               unidad="activos (15-64) por cada mayor"
             />
           </div>
-        </div>
-
-        {/* --- El "para qué": la apuesta social --- */}
-        <div className="apuesta">
-          <p className="apuesta-dato">
-            Para 2040, <strong>1 de cada {fut65}</strong> argentinos tendrá 65 años
-            o más — hoy es 1 de cada {hoy65}.
-          </p>
-          <p className="apuesta-texto">
-            No se puede frenar: esta ola <strong>ya nació</strong>. La pregunta no
-            es si va a pasar, sino si el país —<strong>jubilaciones</strong>,{" "}
-            <strong>salud</strong> y <strong>cuidados</strong>— va a estar listo.
-          </p>
         </div>
 
         <p className="fuente-mini">
