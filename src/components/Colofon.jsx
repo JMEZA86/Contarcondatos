@@ -14,20 +14,45 @@ export default function Colofon() {
         <p className="colofon-bajada">
           Nacer menos, vivir más: la ecuación que cambia el país.
         </p>
-        <p className="colofon-fuentes">
-          Fuentes:{" "}
-          <LinkFuente href={FUENTES.indec}>INDEC — Proyecciones 2022–2040</LinkFuente>
-          {" · "}
-          <LinkFuente href={FUENTES.dosier}>INDEC — Dosier 2025</LinkFuente>
-          {" · "}
-          <LinkFuente href={FUENTES.anses}>ANSES</LinkFuente>
-          {" · "}
-          <LinkFuente href={FUENTES.opc}>OPC</LinkFuente>
-          {" · "}
-          <LinkFuente href={FUENTES.georef}>Georef</LinkFuente>
-          {" · "}
-          <LinkFuente href={FUENTES.onu}>ONU</LinkFuente>
-        </p>
+        <div className="colofon-fuentes">
+          <p className="colofon-fuentes-tit">Fuentes · datos oficiales y abiertos</p>
+          <ul>
+            <li>
+              <LinkFuente href={FUENTES.indec}>
+                INDEC — Estimaciones y proyecciones de población 2022–2040
+              </LinkFuente>{" "}
+              (base Censo 2022): pirámide, fecundidad y esperanza de vida proyectadas.
+            </li>
+            <li>
+              <LinkFuente href={FUENTES.dosier}>
+                INDEC — Dosier «La transformación de la población argentina» (2025)
+              </LinkFuente>
+              : serie histórica 2001–2022 de fecundidad y esperanza de vida.
+            </li>
+            <li>
+              <LinkFuente href={FUENTES.indec}>
+                INDEC — Proyecciones por jurisdicción 2022–2040
+              </LinkFuente>
+              : indicadores por provincia.
+            </li>
+            <li>
+              <LinkFuente href={FUENTES.anses}>ANSES — Anuario Estadístico</LinkFuente>
+              : aportantes por beneficiario del sistema previsional.
+            </li>
+            <li>
+              <LinkFuente href={FUENTES.opc}>OPC — Estado de situación del SIPA</LinkFuente>
+              : cobertura del sistema (51,6%).
+            </li>
+            <li>
+              <LinkFuente href={FUENTES.georef}>Georef (Ministerio del Interior)</LinkFuente>
+              : cartografía de las provincias.
+            </li>
+            <li>
+              <LinkFuente href={FUENTES.onu}>ONU — División de Población (WPP)</LinkFuente>
+              : nivel de reemplazo (2,1 hijos por mujer).
+            </li>
+          </ul>
+        </div>
         <p className="colofon-firma">
           Exploración interactiva · 2026 · Datos oficiales y abiertos del INDEC.
         </p>

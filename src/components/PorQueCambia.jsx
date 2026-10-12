@@ -108,8 +108,10 @@ export default function PorQueCambia() {
 
         <p className="fuente-mini">
           Fuente: <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente> — serie
-          estimada 2001–2022 (Dosier 2025) y proyección 2025–2040. La línea
-          vertical separa lo estimado de lo proyectado; reemplazo 2,1 (ONU).
+          estimada 2001–2022 (
+          <LinkFuente href={FUENTES.dosier}>Dosier 2025</LinkFuente>) y proyección
+          2025–2040. La línea vertical separa lo estimado de lo proyectado;
+          reemplazo 2,1 (<LinkFuente href={FUENTES.onu}>ONU</LinkFuente>).
         </p>
       </div>
     </section>

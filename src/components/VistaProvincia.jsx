@@ -138,8 +138,9 @@ export default function VistaProvincia() {
 
         <p className="fuente-mini">
           Fuente: <LinkFuente href={FUENTES.indec}>INDEC</LinkFuente> — proyecciones
-          por jurisdicción 2022–2040 · mapa Georef. Por provincia el INDEC solo
-          publica proyección: por eso no hay serie histórica.
+          por jurisdicción 2022–2040 · mapa{" "}
+          <LinkFuente href={FUENTES.georef}>Georef</LinkFuente>. Por provincia el
+          INDEC solo publica proyección: por eso no hay serie histórica.
         </p>
       </div>
     </section>
