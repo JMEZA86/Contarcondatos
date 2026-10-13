@@ -22,16 +22,23 @@ export default function TuHistoria() {
   const [codProv, setCodProv] = useState(6); // Buenos Aires por defecto
   const [sexo, setSexo] = useState("mujeres");
 
+  // Año en curso, acotado al rango con datos (2022–2040). El cálculo siempre
+  // parte del año actual hacia 2040 y se actualiza solo con el paso del tiempo.
+  const ANIO_FINAL = 2040;
+  const anioActual = Math.min(ANIO_FINAL, Math.max(2022, new Date().getFullYear()));
+
   // Edad "limpia" para los cálculos (0 a 100).
   const e = Math.max(0, Math.min(100, Number.isFinite(edad) ? edad : 0));
-  const edad2040 = e + 18; // en 2040 (último año proyectado) tendrá esta edad
+  const edad2040 = e + (ANIO_FINAL - anioActual); // edad proyectada en 2040
 
-  // Cohorte: cuántas personas de esa edad y sexo hay en 2022 (base Censo).
-  const filaEdad = piramide.piramide["2022"].find((f) => f.edad === e);
+  // Cohorte: cuántas personas de esa edad y sexo hay este año.
+  const pirAnio = piramide.piramide[String(anioActual)] || piramide.piramide["2022"];
+  const filaEdad = pirAnio.find((f) => f.edad === e);
   const cohorte = filaEdad ? filaEdad[sexo] : 0;
 
-  // Sostén demográfico: hoy vs 2040.
-  const sost2022 = ratio.resumen.sosten_inicial; // 5,46
+  // Sostén demográfico: hoy (año actual) vs 2040.
+  const filaSostHoy = ratio.serie.find((d) => d.anio === anioActual);
+  const sostHoy = filaSostHoy ? filaSostHoy.sosten : ratio.resumen.sosten_inicial;
   const sost2040 = ratio.resumen.sosten_final; // 4,23
 
   // Esperanza de vida al nacer proyectada para 2040 en su provincia vs. el
@@ -108,7 +115,7 @@ export default function TuHistoria() {
           <p className="vos-detalle">
             Ese año, por cada persona mayor va a haber{" "}
             <strong>{coma1(sost2040)}</strong> personas en edad de trabajar. Hoy
-            son <strong>{coma1(sost2022)}</strong>.{" "}
+            son <strong>{coma1(sostHoy)}</strong>.{" "}
             {edad2040 >= 65 && (
               <span>Y vos ya vas a estar entre las personas que el sistema sostiene.</span>
             )}
